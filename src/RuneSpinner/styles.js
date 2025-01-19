@@ -9,7 +9,7 @@ export const Background = styled.div`
   height: calc(100vh + 40px);
   
   /* Background image and blur effect */
-  background-image: url('assets/background.jpg'); /* Path to your background image */
+  background-image: url('assets/rotating-tablet/background.jpg'); /* Path to your background image */
   background-size: cover; /* Ensures the image covers the entire background */
   background-position: center; /* Center the image */
   

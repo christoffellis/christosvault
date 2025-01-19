@@ -6,6 +6,7 @@
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.2",
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.14"
   },
@@ -14,7 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && surge ./build dnd-tools.surge.sh"
+    "deploy": "npm run build && surge ./build christos-vault.surge.sh"
   },
   "eslintConfig": {
     "extends": [
