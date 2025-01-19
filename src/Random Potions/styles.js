@@ -1,20 +1,57 @@
 import styled from "styled-components";
 
-// Styling for the bottle
+// The outer container for the entire bottle
 export const Bottle = styled.div`
-  width: 150px;
+  width: 120px;
   height: 300px;
-  background-color: ${({ color }) => color || "#000"}; /* Dynamically set color */
-  border-radius: 10px;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 `;
 
-// Panel that holds the description, initially blurred
+// The cap of the bottle
+export const Cap = styled.div`
+  width: 50%; /* Cap width as a percentage of Bottle width */
+  height: 8%; /* Cap height as a percentage of Bottle height */
+  background-color: brown; /* Brown color for the cap */
+  border-radius: 5px;
+`;
+
+// The lip of the bottle neck
+export const Lip = styled.div`
+  width: 70%; /* Lip width as a percentage of Bottle width */
+  height: 5%; /* Lip height as a percentage of Bottle height */
+  background-color: ${({ color }) => color || "#ccc"}; /* Potion color */
+  border-radius: 10px;
+`;
+
+// The neck of the bottle
+export const Neck = styled.div`
+  width: 50%; /* Neck width as a percentage of Bottle width */
+  height: 10%; /* Neck height as a percentage of Bottle height */
+  background-color: ${({ color }) => color || "#ccc"}; /* Potion color */
+`;
+
+// The body of the bottle
+export const Body = styled.div`
+  width: 80%; /* Body width as a percentage of Bottle width */
+  height: 75%; /* Body height as a percentage of Bottle height */
+  padding: 5%;
+  background-color: ${({ color }) => color || "#ccc"}; /* Potion color */
+  border-radius: 10px;
+`;
+
+// The liquid of the bottle
+export const Liquid = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: ${({ color }) => color || "#ccc"}; /* Potion color */
+  border-radius: 5px 5px 0 0; /* Fixed typo: border-radius */
+`;
+
+// Description panel with blur effect
 export const DescriptionPanel = styled.div`
   position: absolute;
   top: 50%;

@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Bottle, DescriptionPanel, PageWrapper, PotionsGrid, PotionTitle } from "./styles";
+import { Bottle, Cap, Lip, Neck, Body, DescriptionPanel, PageWrapper, PotionsGrid, PotionTitle, Liquid } from "./styles";
 import { potions } from "./enums"; // List of potions and their details
-
-// SVG component for a simple potion bottle
-const PotionSVG = ({ color }) => (
-  <svg width="100" height="200" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
-    <rect x="20" y="30" width="60" height="140" rx="20" fill={color} stroke="black" strokeWidth="2" />
-    <circle cx="50" cy="15" r="15" fill="#222" />
-    <rect x="40" y="155" width="20" height="10" fill="#333" />
-  </svg>
-);
 
 const PotionPage = () => {
   const [selectedPotion, setSelectedPotion] = useState(potions[0]);
@@ -40,8 +31,13 @@ const PotionPage = () => {
   return (
     <PageWrapper>
       <PotionsGrid>
-        <Bottle color={selectedPotion.color}>
-          <PotionSVG color={selectedPotion.color} />
+        <Bottle>
+          <Cap />
+          <Lip color={selectedPotion.color} />
+          <Neck color={selectedPotion.color} />
+          <Body color={selectedPotion.color} >
+            <Liquid color={selectedPotion.liquidColor} />
+          </Body>
           <DescriptionPanel>
             <PotionTitle>{selectedPotion.name}</PotionTitle>
             <p>{selectedPotion.description}</p>
