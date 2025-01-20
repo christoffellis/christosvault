@@ -1,5 +1,5 @@
 import React from "react";
-import { Background, Grid, Header, ChristosText, VaultText, LinkItem, LinkTitle, Wrapper } from "./styled";
+import { Background, Grid, Header, ChristosText, VaultText, LinkItem, LinkTitle, Wrapper, CoffeeLink } from "./styled";
 import { useNavigate } from "react-router-dom";
 
 export const LandingPage = () => {
@@ -21,6 +21,9 @@ export const LandingPage = () => {
         <ChristosText>Christo's</ChristosText>
         <VaultText>Vault</VaultText>
       </Header>
+      <CoffeeLink href="https://www.buymeacoffee.com/christoffellis" target="_blank" rel="noopener noreferrer">
+        Buy Me a Coffee
+      </CoffeeLink>
       <Grid>
         {links.map((link, index) => (
           <LinkItem

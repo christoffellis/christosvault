@@ -123,3 +123,26 @@ export const LinkTitle = styled.span`
   text-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
 `;
+
+export const CoffeeLink = styled.a`
+  max-width: 200px;
+  // center the link horizontally
+  margin: 0 auto;
+  
+
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #ff813f; /* Coffee orange */
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  
+  &:hover {
+    background-color: #e67335; /* Darker coffee orange */
+    transform: scale(1.05);
+  }
+`;
