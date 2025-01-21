@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Bottle, Cap, Lip, Neck, Body, DescriptionPanel, PageWrapper, PotionsGrid, PotionTitle, Liquid, Shelf, Background } from "./styles";
+import React, { useState, useEffect, useRef } from "react";
+import { Bottle, Cap, Lip, Neck, Body, DescriptionPanel, PageWrapper, PotionsGrid, PotionTitle, Liquid, Shelf, Background, BottleDescriptionWrapper, ShuffleButton } from "./styles";
 import { potions } from "./enums"; // List of potions and their details
+import SwayingTag from "./common/SwayingTag";
 
 const PotionPage = () => {
+  const [spacePressed, setSpacePressed] = useState(false);
   const [selectedPotion, setSelectedPotion] = useState(potions[0]);
   const [potionBorderRadiuses, setPotionBorderRadiuses] = useState(
     {
@@ -37,9 +39,9 @@ const PotionPage = () => {
   // use the potion name as a seed, and generate border radius values based on the seed
   useEffect(() => {
 
-    const lipBorderRadius = 10 + Math.floor(Math.random() * 20);
-    const neckBorderRadius = 10 + Math.floor(Math.random() * 20);
-    const bodyBorderRadius = 10 + Math.floor(Math.random() * 20);
+    const lipBorderRadius = 2 + Math.floor(Math.random() * 8);
+    const neckBorderRadius = 10 + Math.floor(Math.random() * 10);
+    const bodyBorderRadius = 10 + Math.floor(Math.random() * 10);
 
     const liquidBorderRadius = `${bodyBorderRadius - 2}px ${bodyBorderRadius - 2}px 0 0`;
 
@@ -47,14 +49,15 @@ const PotionPage = () => {
       lip: lipBorderRadius,
       neck: neckBorderRadius,
       body: bodyBorderRadius,
-      liquid: liquidBorderRadius
+      liquid: liquidBorderRadius,
+      cap: '5px 5px 0 0'
     });
   }, [selectedPotion]);
 
   useEffect(() => {
 
     const capHeight = 5 + Math.floor(Math.random() * 10);
-    const lipHeight = 5 + Math.floor(Math.random() * 10);
+    const lipHeight = 5 + Math.floor(Math.random() * 4);
     const neckHeight = 8 + Math.floor(Math.random() * 15);
     const bodyHeight = 50 + Math.floor(Math.random() * 50);
 
@@ -130,6 +133,7 @@ const PotionPage = () => {
     const handleSpacebarPress = (event) => {
       if (event.code === "Space") {
         getRandomPotion();
+        setSpacePressed(true);
       }
     };
 
@@ -142,50 +146,61 @@ const PotionPage = () => {
     };
   }, []);
 
+  const neckRef = useRef(null);
+  const tagRef = useRef(null);
+
   return (
     <>
       <Background />
       <PageWrapper>
-        <Bottle>
-          <Cap
-            color={capColor}
-            height={`${potionHeights.cap}%`}
-            width={`${potionWidths.cap}%`}
-            borderRadius={`${potionBorderRadiuses.cap}px`}
-          />
-          <Lip
-            color={selectedPotion.color}
-            height={`${potionHeights.lip}%`}
-            width={`${potionWidths.lip}%`}
-            borderRadius={`${potionBorderRadiuses.lip}px`}
-          />
-          <Neck
-            color={selectedPotion.color}
-            height={`${potionHeights.neck}%`}
-            width={`${potionWidths.neck}%`}
-            borderRadius={`${potionBorderRadiuses.neck}px`}
-          />
-          <Body
-            color={selectedPotion.color}
-            height={`${potionHeights.body}%`}
-            width={`${potionWidths.body}%`}
-            borderRadius={`${potionBorderRadiuses.body}px`}
-          >
-            <Liquid
-              bottleColor={selectedPotion.color}
-              color={selectedPotion.liquidColor}
-              fill={`${potionFill}px`}
-              borderRadius={potionBorderRadiuses.liquid}
+        <BottleDescriptionWrapper>
+          <Bottle>
+            <Cap
+              color={capColor}
+              height={`${potionHeights.cap}%`}
+              width={`${potionWidths.cap}%`}
+              borderRadius={`${potionBorderRadiuses.cap}px`}
             />
-          </Body>
+            <Lip
+              color={selectedPotion.color}
+              height={`${potionHeights.lip}%`}
+              width={`${potionWidths.lip}%`}
+              borderRadius={`${potionBorderRadiuses.lip}px`}
+            />
+            <Neck
+              ref={neckRef}
+              color={selectedPotion.color}
+              height={`${potionHeights.neck}%`}
+              width={`${potionWidths.neck}%`}
+              borderRadius={`${potionBorderRadiuses.neck}px`}
+            />
+            <Body
+              color={selectedPotion.color}
+              height={`${potionHeights.body}%`}
+              width={`${potionWidths.body}%`}
+              borderRadius={`${potionBorderRadiuses.body}px`}
+            >
+              <Liquid
+                bottleColor={selectedPotion.color}
+                color={selectedPotion.liquidColor}
+                fill={`${potionFill}px`}
+                borderRadius={potionBorderRadiuses.liquid}
+              />
+            </Body>
 
-          
-        </Bottle>
-        <DescriptionPanel>
+            
+          </Bottle>
+          <DescriptionPanel>
             <PotionTitle>{selectedPotion.name}</PotionTitle>
             <p>{selectedPotion.description}</p>
           </DescriptionPanel>
+        </BottleDescriptionWrapper>
         <Shelf />
+        {!spacePressed && (
+          <ShuffleButton onClick={getRandomPotion}>
+            Press space to shuffle
+          </ShuffleButton>
+        )}
       </PageWrapper>
     </>
   );

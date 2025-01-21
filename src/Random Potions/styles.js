@@ -70,31 +70,38 @@ export const Liquid = styled.div`
   transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, border-top 0.3s ease;
 `;
 
-// Description panel with blur effect
 export const DescriptionPanel = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  width: 60%;
+  padding: 20px;
+  background-color: #f9f1d3; /* Light paper color */
+  color: #333; /* Darker text color for contrast */
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 2px dashed #d4af37; /* Goldish dashed border for tag style */
   text-align: center;
-  opacity: 0;
-  visibility: hidden;
-  filter: blur(8px); /* Initially blurred */
-  transition: opacity 0.3s, visibility 0.3s, filter 0.3s;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 
-  /* Reveal on hover */
-  ${Bottle}:hover & {
-    opacity: 1;
-    visibility: visible;
-    filter: blur(0);
+  /* Small circle to mimic a punched hole for the tag */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.90); /* Same as the background */
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  &:hover {
+    transform: translateY(-2px); /* Subtle lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   }
 `;
+
 
 // Container for the potion items
 export const PotionsGrid = styled.div`
@@ -106,7 +113,7 @@ export const PotionsGrid = styled.div`
 
 // Potion name style
 export const PotionTitle = styled.h3`
-  color: white;
+  color: #222;
   font-family: 'Noto Sans Runic', sans-serif;
   margin-bottom: 10px;
 `;
@@ -159,8 +166,31 @@ export const Shelf = styled.div`
 // Wrapper for display ogf bottle and description side by side
 export const BottleDescriptionWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  width: 40%;
+  justify-content: space-around;
   align-items: center;
-  width: 100%;
-  padding: 20px;
+`;
+
+export const ShuffleButton = styled.button`
+  position: absolute;
+  bottom: 20%;
+
+
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #5F7FFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 `;

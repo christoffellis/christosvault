@@ -23,7 +23,7 @@ export const Background = styled.div`
 `;
 
 // Content wrapper that will be positioned above the background
-export const Wrapper = styled.div`
+export const Wrapper = styled.div` 
   display: flex;
   justify-content: center;
   align-items: center;
