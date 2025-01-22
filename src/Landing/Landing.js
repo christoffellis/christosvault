@@ -7,7 +7,8 @@ export const LandingPage = () => {
 
   const links = [
     { title: "The Arcane Tablet", path: "/tablet", background: "assets/showcase-images/rotating-tablet.png" },
-    { title: "Random Potions", path: "/potions", background: "assets/showcase-images/potions.png" }
+    { title: "Random Potions", path: "/potions", background: "assets/showcase-images/potions.png" },
+    { title: "Easy Map Grids", path: "/map-grids", background: "assets/showcase-images/grids.png" }
   ];
 
   const handleClick = (path) => {
