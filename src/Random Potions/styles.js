@@ -80,7 +80,8 @@ export const DescriptionPanel = styled.div`
   border: 2px dashed #d4af37; /* Goldish dashed border for tag style */
   text-align: center;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  filter: blur(8px);
 
   /* Small circle to mimic a punched hole for the tag */
   &::before {
@@ -99,6 +100,7 @@ export const DescriptionPanel = styled.div`
   &:hover {
     transform: translateY(-2px); /* Subtle lift on hover */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    filter: blur(0px);
   }
 `;
 
