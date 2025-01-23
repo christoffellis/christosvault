@@ -25,25 +25,41 @@ export const Wrapper = styled.div`
 
 // Header bar
 
-
 export const Header = styled.div`
-  width: 250px;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  width: 80%;
+  background: linear-gradient(to right, rgba(95, 127, 255, 0.4), rgba(167, 184, 255, 0.4), rgba(54, 82, 196, 0.4), rgba(95, 127, 255, 0.4), rgba(0, 51, 255, 0.4)); 
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px;
   color: white;
   text-align: center;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8); /* Subtle shadow for depth */
-  
-  /* Center the header horizontally */
-  margin: 10px auto;
+  box-shadow: 2px 2px 12px rgba(95, 127, 255, 0.8);
+  // border: 2px solid rgba(95, 127, 255, 0.8);
+  margin: 0 auto;
+  backdrop-filter: blur(10px);
+  margin-bottom: 8px;
+
+  /* Animated Gradient */
+  background-size: 400%; 
+  animation: gradient 15s ease infinite; 
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 `;
 
 export const ChristosText = styled.span`
-  font-family: 'Playfair Display', serif; /* Elegant decorative font */
+  font-family: 'Roboto Slab', sans-serif; /* Elegant decorative font */
   font-size: 36px;
-  color: #d4af37; /* Golden bronze color */
-  text-shadow: 0 2px 4px rgba(200, 200, 200, 0.6); /* Subtle shadow for depth */
+  color: #eee; /* Golden bronze color */
+  //text-shadow: 0 2px 4px rgba(200, 200, 200, 0.6); /* Subtle shadow for depth */
   display: block;
   margin-bottom: -5px; /* Slight overlap with Vault */
 `;
@@ -52,8 +68,8 @@ export const VaultText = styled.span`
   font-family: 'Roboto Slab', sans-serif; /* Clean modern font */
   font-size: 50px; /* Larger size */
   font-weight: 900; /* Bold for emphasis */
-  color: #444; /* Metallic gray */
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8); /* Stronger shadow for depth */
+  color: #ddd; /* Metallic gray */
+  // text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8); /* Stronger shadow for depth */
   display: block;
 `;
 
@@ -112,9 +128,23 @@ export const LinkItem = styled.a`
 // Title inside the tile
 export const LinkTitle = styled.span`
   position: absolute;
+  bottom: calc(0.6rem + 12px + 10px + 4px);
+  left: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background for the text */
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+`;
+// Title inside the tile
+export const LinkDescription = styled.span`
+  position: absolute;
   bottom: 10px;
   left: 10px;
-  font-size: 1.2rem;
+  font-size: 0.6rem;
   font-weight: bold;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background for the text */

@@ -1,14 +1,29 @@
 import React from "react";
-import { Background, Grid, Header, ChristosText, VaultText, LinkItem, LinkTitle, Wrapper, CoffeeLink, CoffeeWrapper } from "./styled";
+import { Background, Grid, Header, ChristosText, VaultText, LinkItem, LinkTitle, Wrapper, CoffeeLink, CoffeeWrapper, LinkDescription } from "./styled";
 import { useNavigate } from "react-router-dom";
 
 export const LandingPage = () => {
   const navigate = useNavigate();
 
   const links = [
-    { title: "The Arcane Tablet", path: "/tablet", background: "assets/showcase-images/rotating-tablet.png" },
-    { title: "Random Potions", path: "/potions", background: "assets/showcase-images/potions.png" },
-    { title: "Easy Map Grids", path: "/map-grids", background: "assets/showcase-images/grids.png" }
+    {
+      title: "The Arcane Tablet",
+      path: "/tablet",
+      background: "assets/showcase-images/rotating-tablet.png",
+      description: "An interactive puzzle for DMs to use",
+    },
+    { 
+      title: "Random Potions",
+      path: "/potions",
+      background: "assets/showcase-images/potions.png",
+      description: "A random potion generator",
+    },
+    { 
+      title: "Easy Map Grids",
+      path: "/map-grids",
+      background: "assets/showcase-images/grids.png",
+      description: "An easy to use, click and load grid added for maps",
+    }
   ];
 
   const handleClick = (path) => {
@@ -33,6 +48,7 @@ export const LandingPage = () => {
             background={link.background}
           >
             <LinkTitle>{link.title}</LinkTitle>
+            <LinkDescription>{link.description}</LinkDescription>
           </LinkItem>
         ))}
       </Grid>
