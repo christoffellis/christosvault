@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { OuterCircle, MiddleCircle, InnerCircle, Wrapper, Letter, Label } from "./styles";
+import { OuterCircle, MiddleCircle, InnerCircle, Wrapper, Letter } from "./styles";
 import { runeMeanings } from "./enums/runeMeaning";
-import { BackgroundWrapper } from "./styles";
 import { Background } from "./styles";
 
 // Panel component for showing the rune names, runes, and meanings

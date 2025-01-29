@@ -3,30 +3,28 @@ import { StyledTag } from "./styled";
 
 const SwayingTag = ({ neckRef, tagRef, children, widths}) => {
   const [path, setPath] = useState("");
-
-  // Function to calculate the path for the spline
-  const calculatePath = () => {
-    if (neckRef.current && tagRef.current) {
-      const neckRect = neckRef.current.getBoundingClientRect();
-      const tagRect = tagRef.current.getBoundingClientRect();
-
-      const startX = neckRect.left + neckRect.width / 2;
-      const startY = neckRect.top + neckRect.height / 2;
-      const endX = tagRect.left + tagRect.width / 2;
-      const endY = tagRect.top + tagRect.height / 2;
-
-      const controlX = (startX + endX) / 2; // Control point for the spline
-      const controlY = Math.min(startY, endY) - 50; // Raise the control point for a nice curve
-
-      // Generate an SVG path using cubic Bezier
-      console.log(`M${startX},${startY} Q${controlX},${controlY} ${endX},${endY}`);
-      return `M${startX},${startY} Q${controlX},${controlY} ${endX},${endY}`;
-    }
-    return "";
-  };
-
   // Update the path whenever the neck or tag position changes
   useEffect(() => {
+    const calculatePath = () => {
+      if (neckRef.current && tagRef.current) {
+        const neckRect = neckRef.current.getBoundingClientRect();
+        const tagRect = tagRef.current.getBoundingClientRect();
+  
+        const startX = neckRect.left + neckRect.width / 2;
+        const startY = neckRect.top + neckRect.height / 2;
+        const endX = tagRect.left + tagRect.width / 2;
+        const endY = tagRect.top + tagRect.height / 2;
+  
+        const controlX = (startX + endX) / 2; // Control point for the spline
+        const controlY = Math.min(startY, endY) - 50; // Raise the control point for a nice curve
+  
+        // Generate an SVG path using cubic Bezier
+        console.log(`M${startX},${startY} Q${controlX},${controlY} ${endX},${endY}`);
+        return `M${startX},${startY} Q${controlX},${controlY} ${endX},${endY}`;
+      }
+      return "";
+    };
+
     const updateSpline = () => setPath(calculatePath());
 
     // Initial calculation

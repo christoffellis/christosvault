@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Bottle, Cap, Lip, Neck, Body, DescriptionPanel, PageWrapper, PotionsGrid, PotionTitle, Liquid, Shelf, Background, BottleDescriptionWrapper, ShuffleButton } from "./styles";
-import { potions } from "./enums"; // List of potions and their details
-import SwayingTag from "./common/SwayingTag";
+import { Bottle, Cap, Lip, Neck, Body, DescriptionPanel, PageWrapper, PotionTitle, Liquid, Shelf, Background, BottleDescriptionWrapper, ShuffleButton } from "./styles";
+import { potions } from "./enums";
 
 const PotionPage = () => {
   const [spacePressed, setSpacePressed] = useState(false);
@@ -98,7 +97,7 @@ const PotionPage = () => {
       neck: neckWidth,
       body: bodyWidth
     });
-  }, [selectedPotion]);
+  }, [potionBorderRadiuses.body, potionBorderRadiuses.lip, selectedPotion]);
 
   useEffect(() => {
     // different browns
@@ -147,7 +146,6 @@ const PotionPage = () => {
   }, []);
 
   const neckRef = useRef(null);
-  const tagRef = useRef(null);
 
   return (
     <>

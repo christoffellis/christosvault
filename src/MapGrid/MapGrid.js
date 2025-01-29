@@ -1,8 +1,6 @@
 // App.js
 import React, { useState, useEffect } from "react";
 import { AppContainer, Background, BackgroundCover, Button, Container, Grid, Panel } from "./styled";
-import DraggableToken from "./common/DraggableToken";
-import { SketchPicker } from "react-color";
 
 export const MapGrid = () => {
     const defaultImage = "https://via.placeholder.com/1920x1080";
@@ -14,7 +12,6 @@ export const MapGrid = () => {
       offsetY: 0,
     });
     const [newImage, setNewImage] = useState("");
-    const [color, setColor] = useState("#ffffff");
   
     useEffect(() => {
       const savedImage = localStorage.getItem("backgroundImage");
@@ -58,21 +55,6 @@ export const MapGrid = () => {
           image.src = URL.createObjectURL(file);
         }
       };
-  
-    // Handle Color Change
-    const handleColorChange = (color) => {
-        setColor(color.hex);
-        // Optionally, save color to localStorage
-        localStorage.setItem("color", color.hex);
-    };
-
-    // Load color from localStorage
-    useEffect(() => {
-        const savedColor = localStorage.getItem("color");
-        if (savedColor) {
-        setColor(savedColor);
-        }
-    }, []);
 
     return (
     <Container>
