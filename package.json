@@ -14,12 +14,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
-    "deploy": "npm run build && surge ./build christosvault.com"
+    "build": "react-scripts build",
+    "inject-hashes": "node inject-hashes.js",
+    "deploy": "npm run build && npm run inject-hashes && surge ./build christosvault.com"
   },
   "eslintConfig": {
     "extends": [
