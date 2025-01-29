@@ -1,42 +1,39 @@
 import styled from "styled-components";
 
-// Background with blur
+// Darker Background with a mystical glow effect
 export const Background = styled.div`
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: calc(100% + 40px);
-  height: calc(100vh + 40px);
-  background-image: url('assets/landing/background.jpg'); /* Replace with your background image */
-  background-size: cover;
-  background-position: center;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at center, #120326 5%, #0a0214 80%);
   z-index: -1;
 `;
 
-// Main wrapper
+// Main wrapper for layout
 export const Wrapper = styled.div`
   position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 20px;
 `;
 
-// Header bar
-
+// Re-added Animated Gradient Title Panel
 export const Header = styled.div`
-  width: 80%;
-  background: linear-gradient(to right, rgba(95, 127, 255, 0.4), rgba(167, 184, 255, 0.4), rgba(54, 82, 196, 0.4), rgba(95, 127, 255, 0.4), rgba(0, 51, 255, 0.4)); 
+  width: 90%;
   padding: 20px;
-  border-radius: 0 0 8px 8px;
-  color: white;
   text-align: center;
-  box-shadow: 2px 2px 12px rgba(95, 127, 255, 0.8);
-  // border: 2px solid rgba(95, 127, 255, 0.8);
-  margin: 0 auto;
-  backdrop-filter: blur(10px);
-  margin-bottom: 8px;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  background: linear-gradient(to right, rgba(95, 127, 255, 0.4), rgba(167, 184, 255, 0.4), rgba(54, 82, 196, 0.4), rgba(95, 127, 255, 0.4), rgba(0, 51, 255, 0.4)); 
+  box-shadow: 0px 0px 15px rgba(150, 90, 255, 0.4);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease-in-out;
 
   /* Animated Gradient */
   background-size: 400%; 
@@ -53,53 +50,104 @@ export const Header = styled.div`
       background-position: 0% 50%;
     }
   }
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
-export const ChristosText = styled.span`
-  font-family: 'Roboto Slab', sans-serif; /* Elegant decorative font */
+// Uniform Text Styling for Header
+export const HeaderText = styled.span`
+  font-family: 'Cinzel', serif;
   font-size: 36px;
-  color: #eee; /* Golden bronze color */
-  //text-shadow: 0 2px 4px rgba(200, 200, 200, 0.6); /* Subtle shadow for depth */
-  display: block;
-  margin-bottom: -5px; /* Slight overlap with Vault */
+  font-weight: 700;
+  color: #c9a9ff; /* Soft enchanted glow */
+  text-shadow: 0 2px 8px rgba(200, 150, 255, 0.5);
 `;
 
-export const VaultText = styled.span`
-  font-family: 'Roboto Slab', sans-serif; /* Clean modern font */
-  font-size: 50px; /* Larger size */
-  font-weight: 900; /* Bold for emphasis */
-  color: #ddd; /* Metallic gray */
-  // text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8); /* Stronger shadow for depth */
-  display: block;
-`;
-
-// Grid container for tiles
+// Darker Glassmorphic Panel for Grid (matches background)
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  padding: 50px;
-  background-color: #6b4a33; /* Lighter brown for tile background */
+  padding: 40px;
+  background: rgba(10, 2, 20, 0.85);
   border-radius: 15px;
-  margin: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow around the grid */
+  box-shadow: inset 0px 0px 15px rgba(255, 255, 255, 0.1), 
+              0px 0px 10px rgba(100, 50, 150, 0.4);
+  backdrop-filter: blur(8px);
+  width: 85%;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+
+
+
+  /* Subtle Arcane Texture */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/landing/texture.png'); 
+    animation: gradient 15s ease infinite; 
+    background-size: cover;
+    opacity: 0.12; /* Just enough to add depth without overpowering */
+    pointer-events: none;
+
+    @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+    }
+  }
+
+  /* Faint Glow on Hover */
+  &:hover {
+    box-shadow: 0px 0px 20px rgba(140, 70, 200, 0.5);
+    transition: box-shadow 0.4s ease-in-out;
+  }
+
+
+
+  &:hover::before {
+    animation: flicker 3s infinite ease-in-out;
+
+      /* Flickering Arcane Glow */
+    @keyframes flicker {
+      0% { box-shadow: 0px 0px 12px rgba(140, 70, 200, 0.3); }
+      50% { box-shadow: 0px 0px 15px rgba(200, 135, 70, 0.6); }
+      100% { box-shadow: 0px 0px 12px rgba(140, 70, 200, 0.3); }
+    }
+  }
 `;
 
-// Individual tile (LinkItem)
+
+// Individual Tile with a soft glow effect
 export const LinkItem = styled.a`
   position: relative;
   display: block;
-  height: 200px;
-  background-image: ${({ background }) => `url(${background})`};
+  height: 240px;
+  background: ${({ background }) => `url(${background})`};
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 24px;
   text-decoration: none;
-  color: #f2f2f2;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: white;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 5px 12px rgba(100, 50, 150, 0.3);
+    backdrop-filter: blur(8px); /* Apply blur only to the background */
 
+  /* Pseudo-element for background blur */
   &::before {
     content: '';
     position: absolute;
@@ -107,55 +155,127 @@ export const LinkItem = styled.a`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
-    backdrop-filter: blur(4px); /* Frosted glass effect */
-    z-index: 1;
-    transition: backdrop-filter 0.3s ease;
+    background-image: ${({ background }) => `url(${background})`};
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Ensure it stays behind content */
+    border-radius: 24px;
+    transition: background 0.3s ease-in-out;
   }
 
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(0px);
+    transform: scale(1.04);
+    box-shadow: 0px 0px 18px rgba(150, 90, 255, 0.5);
   }
+
+  /* Overlay on hover */
+  &::before {
+    background: rgba(10, 2, 20, 0.4); /* Initial overlay */
+    transition: background 0.3s ease-in-out;
+  }
+
   &:hover::before {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(1px);
+    background: rgba(150, 90, 255, 0.2); /* Hover overlay color */
   }
 `;
 
-// Title inside the tile
+
+// Title text inside tile
 export const LinkTitle = styled.span`
   position: absolute;
-  bottom: calc(0.6rem + 12px + 10px + 4px);
-  left: 10px;
-  font-size: 1rem;
+  bottom: 60px;
+  left: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background for the text */
-  padding: 5px 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 12px;
   border-radius: 5px;
-  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-`;
-// Title inside the tile
-export const LinkDescription = styled.span`
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  font-size: 0.6rem;
-  font-weight: bold;
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background for the text */
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
 `;
 
+// Description inside tile
+export const LinkDescription = styled.span`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+`;
+
+// "Buy me a Coffee" floating button with neon glow
 export const CoffeeWrapper = styled.div`
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.2s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0px 0px 10px rgba(255, 200, 255, 0.6));
+  }
+`;
+
+export const ChristosText = styled.span`
+  font-family: 'Cinzel', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #c9a9ff;
+  text-shadow: 0 2px 8px rgba(200, 150, 255, 0.5);
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+
+  /* Shimmer effect */
+  background: linear-gradient(90deg, #c9a9ff, #ffffff, #c9a9ff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s infinite linear, float 7s infinite ease-in-out;
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+`;
+
+export const VaultText = styled.span`
+  font-family: 'Cinzel', serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #9f7cff;
+  text-shadow: 0 2px 8px rgba(180, 120, 255, 0.5);
+  display: inline-block;
+  position: relative;
+
+  /* Shimmer effect */
+  background: linear-gradient(90deg, #9f7cff, #ffffff, #9f7cff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s infinite linear, float 5s infinite ease-in-out;
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
 `;

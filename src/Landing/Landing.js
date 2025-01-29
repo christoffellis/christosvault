@@ -35,6 +35,7 @@ export const LandingPage = () => {
       <Background />
       <Header>
         <ChristosText>Christo's</ChristosText>
+        <br/>
         <VaultText>Vault</VaultText>
       </Header>
       <CoffeeWrapper>

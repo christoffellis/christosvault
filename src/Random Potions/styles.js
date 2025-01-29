@@ -40,6 +40,7 @@ export const Neck = styled.div`
   height: ${({ height }) => height || '10%'}; /* Neck height as a percentage of Bottle height */
   background-color: ${({ color }) => color || '#ccc'}; /* Potion color */
   border-right: 4px solid rgba(0, 0, 0, 0.2); /* Vector shadow */
+  border-top: 4px solid rgba(0, 0, 0, 0.2); /* Vector shadow */
   transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease; /* Animation */
 
 `;
@@ -52,6 +53,8 @@ export const Body = styled.div`
   background-color: ${({ color }) => color || '#ccc'}; /* Potion color */
   border-radius: ${({ borderRadius }) => borderRadius || '10px'};
   border-right: 10px solid rgba(0, 0, 0, 0.2); /* Vector shadow */
+  border-top: 3px solid rgba(255, 255, 255, 0.2); /* Vector shadow */
+  border-left: 2px solid rgba(255, 255, 255, 0.2); /* Vector shadow */
   transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, background-color 0.3s ease; /* Animation */
   // set align to bottom
   display: flex;
