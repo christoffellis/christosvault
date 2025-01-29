@@ -14,7 +14,7 @@ root.render(
     <Router>
       <Routes>
         {/* Define routes here */}
-        <Route path="/" element={<LandingPage />} />
+        <Route exact path="/" element={<LandingPage />} />
         <Route path="/tablet" element={<RuneSpinner />} />
         <Route path="/potions" element={<PotionPage />} />
         <Route path="/map-grids" element={<MapGrid />} />
