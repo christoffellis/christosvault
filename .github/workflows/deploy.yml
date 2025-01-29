@@ -23,7 +23,9 @@ jobs:
         run: npm install
 
       - name: Build React App
-        run: npm run build
+        run: |
+          npm run build
+          npm run inject-hashes
 
       - name: Install Surge
         run: npm install -g surge
