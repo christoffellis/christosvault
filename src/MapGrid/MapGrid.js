@@ -12,8 +12,7 @@ export const MapGrid = () => {
   });
   const [newImage, setNewImage] = useState("");
 
-  const [panelOpacity, setPanelOpacity] = useState(1); // Start fully visible
-  const [mouseMoved, setMouseMoved] = useState(false);
+  const [panelOpacity, setPanelOpacity] = useState(1);
 
   useEffect(() => {
     const savedImage = localStorage.getItem("backgroundImage");
@@ -58,12 +57,10 @@ export const MapGrid = () => {
   useEffect(() => {
     let timeout;
     const handleMouseMove = () => {
-      setMouseMoved(true);
       setPanelOpacity(1); // Make panel visible
       clearTimeout(timeout);
 
       timeout = setTimeout(() => {
-        setMouseMoved(false);
         setPanelOpacity(0); // Fade out panel after delay
       }, 2500);
     };
