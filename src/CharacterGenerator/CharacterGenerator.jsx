@@ -27,7 +27,6 @@ export const CharacterGenerator = () => {
     speechCharacteristic: "",
   });
 
-  const [imageUrl, setImageUrl] = useState("https://via.placeholder.com/90"); // Default image
   const [isGenerating, setIsGenerating] = useState(false);
 
   // Function to generate a random character description
@@ -51,9 +50,6 @@ export const CharacterGenerator = () => {
         trait2,
         speechCharacteristic,
       });
-
-      // Set a new random image (this can be linked to role or a different logic)
-      setImageUrl(`https://source.unsplash.com/100x100/?face,portrait&random=${Math.random()}`);
 
       count++;
       if (count >= maxCount) {

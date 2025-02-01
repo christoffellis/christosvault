@@ -5,7 +5,6 @@ import {
   StatName,
   StatValue,
   StatModifier,
-  RerollButton,
 } from "./styled";
 
 const stats = [
