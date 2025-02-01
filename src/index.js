@@ -6,6 +6,7 @@ import { LandingPage } from './Landing/Landing';
 import RuneSpinner from './RuneSpinner/RuneSpinner'; // Example of additional page/component
 import PotionPage from './Random Potions/Potions';
 import { MapGrid } from './MapGrid/MapGrid';
+import { CharacterGenerator } from './CharacterGenerator/CharacterGenerator';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,6 +19,7 @@ root.render(
         <Route path="/tablet" element={<RuneSpinner />} />
         <Route path="/potions" element={<PotionPage />} />
         <Route path="/map-grids" element={<MapGrid />} />
+        <Route path="/character-generator" element={<CharacterGenerator />} />
       </Routes>
     </Router>
   </React.StrictMode>

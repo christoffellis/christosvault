@@ -23,6 +23,12 @@ export const LandingPage = () => {
       path: "/map-grids",
       background: "assets/showcase-images/grids.png",
       description: "An easy to use, click and load grid added for maps",
+    },
+    { 
+      title: "Character Generator",
+      path: "/character-generator",
+      background: "assets/showcase-images/character-generator.png",
+      description: "A simple character generator for practicing DMs",
     }
   ];
 
