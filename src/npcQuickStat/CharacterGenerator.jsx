@@ -4,8 +4,10 @@ import {
   PageContainer, 
   StyledButton, 
   StyledCode, 
-  CharacterImageWrapper,
+  CharacterImageWrapper, 
   CharacterImage, 
+  Dropdown, 
+  Label 
 } from "./styled";
 
 import {
@@ -13,7 +15,15 @@ import {
   locations,
   npcRoles,
   visualTraits,
+  Classes,
+  classColorMap
 } from "./enums";
+import { StatBar } from "./components";
+import { HealthSpeedSpellBar } from "./components/HealthSpeedSpellBar";
+
+// List of available classes and levels
+const classList = Object.keys(Classes);
+const levelList = Array.from({ length: 20 }, (_, i) => i + 1);
 
 const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
@@ -27,6 +37,8 @@ export const CharacterGenerator = () => {
   });
 
   const [isGenerating, setIsGenerating] = useState(false);
+  const [selectedLevel, setSelectedLevel] = useState(1);
+  const [selectedClass, setSelectedClass] = useState(Classes.Barbarian(selectedLevel));
 
 
   // Function to generate a random character description
@@ -65,6 +77,8 @@ export const CharacterGenerator = () => {
     generateCharacter();
   }, []);
 
+  console.log(selectedClass)
+
   return (
     <PageContainer>
       <CenteredDiv>
@@ -79,6 +93,49 @@ export const CharacterGenerator = () => {
         <p>They have <StyledCode>{description.trait1}</StyledCode> and <StyledCode>{description.trait2}</StyledCode>.</p>
         <p>They tend to speak with <StyledCode>{description.speechCharacteristic}</StyledCode>.</p>
       </CenteredDiv>
+
+              {/* Class and Level Dropdowns */}
+              <div>
+          <Dropdown 
+            value={selectedClass.className} 
+            onChange={(e) => {
+              setSelectedClass(Classes[e.target.value](selectedLevel))
+            }}
+            color={classColorMap[selectedClass.className]}
+          >
+            {classList.map((className, index) => (
+              <option key={index} value={className}>
+                {className}
+              </option>
+            ))}
+          </Dropdown>
+        </div>
+
+        <div>
+          <Label>Level</Label>
+          <Dropdown 
+            value={selectedLevel} 
+            onChange={(e) => {
+              setSelectedLevel(e.target.value);
+            }}
+            color={classColorMap[selectedClass.className]}
+          >
+            {levelList.map((level) => (
+              <option key={level} value={level}>
+                Level {level}
+              </option>
+            ))}
+          </Dropdown>
+        </div>
+
+        <HealthSpeedSpellBar
+          health={selectedClass.hitPoints}
+          speed={selectedClass.speed}
+          spellSlots={description.spellSlots}
+        />
+
+
+      <StatBar reroll={description} />
 
       <StyledButton onClick={generateCharacter} disabled={isGenerating}>
         {isGenerating ? "Generating..." : "Generate Character"}

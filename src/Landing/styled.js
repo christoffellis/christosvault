@@ -33,55 +33,96 @@ export const Header = styled.div`
   backdrop-filter: blur(8px);
   background: linear-gradient(to right, rgba(95, 127, 255, 0.4), rgba(167, 184, 255, 0.4));
   box-shadow: 0px 0px 15px rgba(150, 90, 255, 0.4);
-
+  margin-bottom: 40px;
   @media (max-width: 768px) {
     font-size: 28px;
     padding: 15px;
   }
 `;
 
-export const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 40px;
-  width: 85%;
-  margin-top: 20px;
-  position: relative;
-  overflow: auto;
+export const GridLabel = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 16px;
+  padding: 10px;
+  background: linear-gradient(to right, rgba(95, 127, 255, 0.4), rgba(167, 184, 255, 0.4));
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(150, 90, 255, 0.3);
+  backdrop-filter: blur(6px);
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    padding: 8px;
+  }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr; /* Stack items on smaller screens */
-    padding: 20px;
+    font-size: 1.2rem;
   }
 `;
 
+export const Grid = styled.div`
+  background-color: #0006;
+  border-radius: 24px;
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+`;
 
-// Individual Link Item
 export const LinkItem = styled.div`
   position: relative;
   display: flex;
+  flex: 1 0 0;
+  min-width: 350px;
+  max-width: 600px;
   flex-direction: column;
   justify-content: flex-end;
   height: 220px;
-  background: ${({ background }) => `url(${background}) center/cover`};
   border-radius: 16px;
   text-decoration: none;
   color: white;
   padding: 15px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.5s ease-in-out;
   box-shadow: 0 5px 12px rgba(100, 50, 150, 0.3);
   cursor: pointer;
+  overflow: hidden; /* Ensure the background doesn't overflow */
+
+  /* Before element for the background */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: ${({ background }) => `url(${background}) center/cover`};
+    filter: blur(4px); /* Apply initial blur effect */
+    z-index: -1; /* Put the background behind the content */
+    transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Longer transition */
+    opacity: 1; /* Initially visible */
+  }
 
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 18px rgba(150, 90, 255, 0.5);
+    box-shadow: 0px 0px 18px rgb(150, 90, 255);
+    background-color: #965aff10;
+
+
+    &::before {
+      filter: blur(2px); /* Apply less blur on hover */
+      opacity: 0.85; /* Slightly reduce opacity to give a fading effect */
+    }
   }
 
   @media (max-width: 600px) {
     height: 180px;
   }
 `;
+
 
 // Link Title
 export const LinkTitle = styled.span`
@@ -109,6 +150,7 @@ export const CoffeeWrapper = styled.div`
   justify-content: center;
   align-items: center;
   transition: transform 0.2s ease-in-out;
+  z-index: 100;
 
   &:hover {
     transform: scale(1.1);
