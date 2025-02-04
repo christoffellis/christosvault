@@ -28,6 +28,7 @@ export const Classes = {
             hitPoints: calculateHitPoints(level, 8),
             proficiencyBonus: getProficiencyBonus(level),
             spellSlots: {
+            0: [2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             1: [2, 3, 4, 4, 4, 4, 4, 4, 4, 4],
             2: [0, 2, 3, 3, 3, 3, 3, 3, 3, 3],
             3: [0, 0, 2, 3, 3, 3, 3, 3, 3, 3],
@@ -49,6 +50,7 @@ export const Classes = {
           hitPoints: calculateHitPoints(level, 8),
           proficiencyBonus: getProficiencyBonus(level),
           spellSlots: {
+            0: [3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5],
             1: [2, 3, 4, 4, 4, 4, 4, 4, 4, 4],
             2: [0, 2, 3, 3, 3, 3, 3, 3, 3, 3],
             3: [0, 0, 2, 3, 3, 3, 3, 3, 3, 3],
@@ -71,6 +73,7 @@ export const Classes = {
         hitPoints: calculateHitPoints(level, 8),
         proficiencyBonus: getProficiencyBonus(level),
         spellSlots: {
+            0: [2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4],
             1: [2, 3, 4, 4, 4, 4, 4, 4, 4, 4],
             2: [0, 2, 3, 3, 3, 3, 3, 3, 3, 3],
             3: [0, 0, 2, 3, 3, 3, 3, 3, 3, 3],
@@ -156,6 +159,7 @@ export const Classes = {
           hitPoints: calculateHitPoints(level, 6),
           proficiencyBonus: getProficiencyBonus(level),
           spellSlots: {
+            0: [4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
             1: [2, 3, 4, 4, 4, 4, 4, 4, 4, 4],
             2: [0, 2, 3, 3, 3, 3, 3, 3, 3, 3],
             3: [0, 0, 2, 3, 3, 3, 3, 3, 3, 3],
@@ -177,6 +181,7 @@ export const Classes = {
           hitPoints: calculateHitPoints(level, 8),
           proficiencyBonus: getProficiencyBonus(level),
           spellSlots: {
+            0: [2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
             1: [2, 3, 4, 4, 4, 4, 4, 4, 4, 4],
             2: [0, 2, 3, 3, 3, 3, 3, 3, 3, 3],
             3: [0, 0, 2, 3, 3, 3, 3, 3, 3, 3],
@@ -198,6 +203,7 @@ export const Classes = {
           hitPoints: calculateHitPoints(level, 6),
           proficiencyBonus: getProficiencyBonus(level),
           spellSlots: {
+            0: [3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
             1: [2, 3, 4, 4, 4, 4, 4, 4, 4, 4],
             2: [0, 2, 3, 3, 3, 3, 3, 3, 3, 3],
             3: [0, 0, 2, 3, 3, 3, 3, 3, 3, 3],

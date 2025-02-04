@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { 
-  CenteredDiv, 
+import {
   PageContainer, 
-  StyledButton, 
-  StyledCode, 
-  CharacterImageWrapper, 
-  CharacterImage, 
+  StyledButton,
   Dropdown, 
   Label 
 } from "./styled";
@@ -27,7 +23,7 @@ const levelList = Array.from({ length: 20 }, (_, i) => i + 1);
 
 const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-export const CharacterGenerator = () => {
+export const NPCQuickStats = () => {
   const [description, setDescription] = useState({
     location: "",
     role: "",
@@ -77,40 +73,21 @@ export const CharacterGenerator = () => {
     generateCharacter();
   }, []);
 
-  console.log(selectedClass)
-
   return (
     <PageContainer>
-      <CenteredDiv>
-        {/* Character Image with Cutout Effect */}
-        <CharacterImageWrapper>
-          <CharacterImage src={description.location.url} alt="Character Portrait" />
-        </CharacterImageWrapper>
-
-        {/* Display randomized description */}
-        <p>You arrive at a <StyledCode>{description.location.name}</StyledCode></p>
-        <p>There is a <StyledCode>{description.role}</StyledCode></p>
-        <p>They have <StyledCode>{description.trait1}</StyledCode> and <StyledCode>{description.trait2}</StyledCode>.</p>
-        <p>They tend to speak with <StyledCode>{description.speechCharacteristic}</StyledCode>.</p>
-      </CenteredDiv>
-
-              {/* Class and Level Dropdowns */}
-              <div>
-          <Dropdown 
-            value={selectedClass.className} 
-            onChange={(e) => {
-              setSelectedClass(Classes[e.target.value](selectedLevel))
-            }}
-            color={classColorMap[selectedClass.className]}
-          >
-            {classList.map((className, index) => (
-              <option key={index} value={className}>
-                {className}
-              </option>
-            ))}
-          </Dropdown>
-        </div>
-
+        <Dropdown 
+          value={selectedClass.className} 
+          onChange={(e) => {
+            setSelectedClass(Classes[e.target.value](selectedLevel))
+          }}
+          color={classColorMap[selectedClass.className]}
+        >
+          {classList.map((className, index) => (
+            <option key={index} value={className}>
+              {className}
+            </option>
+          ))}
+        </Dropdown>
         <div>
           <Label>Level</Label>
           <Dropdown 
@@ -127,18 +104,22 @@ export const CharacterGenerator = () => {
             ))}
           </Dropdown>
         </div>
-
-        <HealthSpeedSpellBar
-          health={selectedClass.hitPoints}
-          speed={selectedClass.speed}
-          spellSlots={description.spellSlots}
-        />
+        
+        <div>
+          <HealthSpeedSpellBar
+            health={selectedClass.hitPoints}
+            speed={selectedClass.speed}
+            spellSlots={selectedClass.spellSlots || {}}
+            level={selectedLevel}
+            characterClass={selectedClass}
+          />
+        </div>
 
 
       <StatBar reroll={description} />
 
       <StyledButton onClick={generateCharacter} disabled={isGenerating}>
-        {isGenerating ? "Generating..." : "Generate Character"}
+        {isGenerating ? "Generating..." : "Shuffle Stats"}
       </StyledButton>
     </PageContainer>
   );

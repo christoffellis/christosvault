@@ -3,3 +3,4 @@ export * from './npcRoles';
 export * from './speechCharacteristics';
 export * from './visualTraits';
 export * from './classes';
+export * from './spells';

@@ -103,8 +103,9 @@ export const LinkItem = styled.div`
     background: ${({ background }) => `url(${background}) center/cover`};
     filter: blur(4px); /* Apply initial blur effect */
     z-index: -1; /* Put the background behind the content */
-    transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Longer transition */
+    transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out, background-size 0.8s ease-in-out; /* Longer transition */
     opacity: 1; /* Initially visible */
+    background-size: 100%;
   }
 
   &:hover {
@@ -115,6 +116,7 @@ export const LinkItem = styled.div`
     &::before {
       filter: blur(2px); /* Apply less blur on hover */
       opacity: 0.85; /* Slightly reduce opacity to give a fading effect */
+      background-size: 110%;
     }
   }
 
@@ -130,7 +132,8 @@ export const LinkTitle = styled.span`
   font-weight: bold;
   background: rgba(0, 0, 0, 0.6);
   padding: 8px 12px;
-  border-radius: 5px;
+  border-radius: 8px;
+  margin-bottom: 4px;
 `;
 
 // Description Text

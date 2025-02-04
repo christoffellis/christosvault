@@ -49,12 +49,12 @@ export const LandingPage = () => {
       background: "assets/showcase-images/character-generator.png",
       description: "A simple character generator for practicing DMs",
     },
-    // {
-    //   title: "NPC Quick Stats",
-    //   path: "/quick-stats",
-    //   background: "assets/showcase-images/character-generator.png",
-    //   description: "A simple character generator for practicing DMs",
-    // },
+    {
+      title: "NPC Quick Stats",
+      path: "/quick-stats",
+      background: "assets/showcase-images/stats-generator.png",
+      description: "A simple character generator for practicing DMs",
+    },
   ];
 
   const GridList = {
