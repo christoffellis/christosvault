@@ -27,7 +27,7 @@ export const MapsPage = () => {
   
         <Content>
           <ImageContainer>
-            <MapImage src={isDay ? mapData.background : mapData.nightImage} alt={mapData.name} />
+            <MapImage src={isDay ? mapData.assets.image.day : mapData.assets.image.night} alt={mapData.name} />
             <ToggleSwitch onClick={() => setIsDay(!isDay)}>
               {isDay ? "🌞 Day" : "🌙 Night"}
             </ToggleSwitch>
@@ -52,7 +52,7 @@ export const MapsPage = () => {
           <iframe
             width="100%"
             height="400"
-            src={`https://www.youtube.com/embed/${mapData.youtubeId}`}
+            src={`https://www.youtube.com/embed/${(isDay ? mapData.assets.video.day : mapData.assets.video.night).split('/')[3]}?loop=1&showinfo=1&modestbranding=0&rel=0`}
             title="Map Showcase"
             frameBorder="0"
             allowFullScreen
