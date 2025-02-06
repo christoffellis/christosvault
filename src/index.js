@@ -8,6 +8,7 @@ import PotionPage from './Random Potions/Potions';
 import { MapGrid } from './MapGrid/MapGrid';
 import { CharacterGenerator } from './CharacterGenerator/CharacterGenerator';
 import { NPCQuickStats } from './npcQuickStat/npxQuickStats';
+import { MapsPage } from './Maps';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,6 +23,7 @@ root.render(
         <Route path="/map-grids" element={<MapGrid />} />
         <Route path="/character-generator" element={<CharacterGenerator />} />
         <Route path="/quick-stats" element={<NPCQuickStats />} />
+        <Route path="/maps/:map-name" element={<MapsPage />} />
       </Routes>
     </Router>
   </React.StrictMode>

@@ -13,6 +13,7 @@ import {
   LinkDescription,
   GridLabel,
 } from "./styled";
+import { Maps } from "../Maps/enums";
 
 export const LandingPage = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ export const LandingPage = () => {
   const GridList = {
     "Tools": Tools,
     "Generators": Generators,
-    "Puzzles": Puzzles
+    "Puzzles": Puzzles,
   }
 
   const SortedGridList = Object.fromEntries(
@@ -94,12 +95,22 @@ export const LandingPage = () => {
           {value.map((link, index) => (
             <LinkItem key={index} onClick={() => navigate(link.path)} background={link.background}>
               <LinkTitle>{link.title}</LinkTitle>
-              <LinkDescription>{link.description}</LinkDescription>
+              {link.description && (<LinkDescription>{link.description}</LinkDescription>)}
             </LinkItem>
           ))}
         </Grid>
         </>
       ))}
+
+      <GridLabel>Maps</GridLabel>
+        <Grid>
+          {Maps.map((link, index) => (
+            <LinkItem key={index} onClick={() => navigate(link.path)} background={link.background}>
+              <LinkTitle>{link.title}</LinkTitle>
+              {link.description && (<LinkDescription>{link.description}</LinkDescription>)}
+            </LinkItem>
+          ))}
+        </Grid>
       
     </Wrapper>
   );

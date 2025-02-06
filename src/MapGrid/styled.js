@@ -35,16 +35,24 @@ export const BackgroundCover = styled.div`
 
 export const AppContainer = styled.div`
   position: absolute;
-//   width: ${(props) => (props.rotate ? "100vh" : "100vw")};
-//   height: ${(props) => (props.rotate ? "100vw" : "100vh")};
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const VideoWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  iframe {
     width: 100%;
     height: 100%;
-  background-image: ${(props) => `url(${props.backgroundImage})`};
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  transform: ${(props) => (props.rotate ? `rotate(90deg) scale(${props.scale})` : "none")};
-  overflow: hidden;
+    border: none;
+  }
 `;
 
 export const Grid = styled.div`

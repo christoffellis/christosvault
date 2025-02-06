@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AppContainer, Background, BackgroundCover, Button, Container, Grid, Panel } from "./styled";
+import { AppContainer, Background, BackgroundCover, Button, Container, Grid, Panel, VideoWrapper } from "./styled";
 
 export const MapGrid = () => {
   const defaultImage = "https://via.placeholder.com/1920x1080";
@@ -15,17 +15,32 @@ export const MapGrid = () => {
   const [panelOpacity, setPanelOpacity] = useState(1);
 
   useEffect(() => {
-    const savedImage = localStorage.getItem("backgroundImage");
+    const savedData = JSON.parse(localStorage.getItem("backgroundImage"));
     const savedGridSize = JSON.parse(localStorage.getItem("gridSize"));
-
-    if (savedImage) setBackgroundImage(savedImage);
+  
+    if (savedData) setBackgroundImage(savedData);
     if (savedGridSize) setGridSize(savedGridSize);
   }, []);
 
-  const handleImageChange = () => {
-    setBackgroundImage(newImage);
-    localStorage.setItem("backgroundImage", newImage);
+  const extractYouTubeID = (url) => {
+    const match = url.match(
+      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    );
+    return match ? match[1] : null;
   };
+  
+  const handleImageChange = () => {
+    const videoID = extractYouTubeID(newImage);
+  
+    if (videoID) {
+      setBackgroundImage({ type: "video", id: videoID });
+      localStorage.setItem("backgroundImage", JSON.stringify({ type: "video", id: videoID }));
+    } else {
+      setBackgroundImage({ type: "image", url: newImage });
+      localStorage.setItem("backgroundImage", JSON.stringify({ type: "image", url: newImage }));
+    }
+  };
+  
 
   const shouldRotateImage = (imageWidth, imageHeight) => {
     const screenAspectRatio = window.innerWidth / window.innerHeight;
@@ -75,7 +90,21 @@ export const MapGrid = () => {
 
   return (
     <Container>
-      <Background backgroundImage={backgroundImage.url} rotate={backgroundImage.rotate} />
+      {backgroundImage.type === "video" ? (
+      <VideoWrapper>
+        <iframe
+          src={`https://www.youtube.com/embed/${backgroundImage.id}?autoplay=1&loop=1&playlist=${backgroundImage.id}&controls=0&showinfo=0&modestbranding=1&rel=0&mute=1&cc_load_policy=0`} 
+          title="YouTube Video"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        />
+      </VideoWrapper>
+    ) : (
+      <>
+        <Background backgroundImage={backgroundImage.url} />
+        <AppContainer backgroundImage={backgroundImage.url} />
+      </>
+    )}
       <BackgroundCover />
 
       <AppContainer backgroundImage={backgroundImage.url} rotate={backgroundImage.rotate} scale={scale}>
@@ -99,7 +128,7 @@ export const MapGrid = () => {
       >
         <input
           type="text"
-          placeholder="Enter image URL"
+          placeholder="Enter image or Youtube URL"
           value={newImage}
           onChange={(e) => setNewImage(e.target.value)}
         />
