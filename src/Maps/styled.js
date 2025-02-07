@@ -61,11 +61,25 @@ export const MapImage = styled.img`
   width: 100%;
   border-radius: 12px;
   transition: box-shadow 0.5s ease;
+  position: relative;
 
   &:hover {
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
   }
-  `;
+`;
+
+export const OverlayImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  opacity: ${(props) => (props.isDay ? 0 : 1)};
+  transition: opacity 0.5s ease;
+  pointer-events: none; // Ensures it doesn't block interactions with MapImage
+`;
+
 
 export const ToggleSwitch = styled.button`
   position: absolute;
@@ -140,6 +154,25 @@ export const YouTubeContainer = styled.div`
   width: 100%;
   max-width: 800px;
   margin-top: 20px;
+  position: relative;
+`;
+
+export const YouTubeFrame = styled.iframe`
+  width: 100%;
+  height: 400px;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: ${(props) => (props.isDay ? 0 : 1)};
+  transition: opacity 0.5s ease;
+  pointer-events: ${(props) => (props.isDay ? "none" : "auto")}; // Ensures only the visible iframe is interactive
+`;
+
+export const VideoWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 400px;
 `;
 
 export const NotFound = styled.div`

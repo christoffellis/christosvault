@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { BackgroundCover, ButtonContainer, Container, Content, Description, EditorButton, Header, ImageContainer, MapImage, ModeButton, NotFound, Title, ToggleSwitch, YouTubeContainer } from "./styled";
+import { BackgroundCover, ButtonContainer, Container, Content, Description, EditorButton, Header, ImageContainer, MapImage, ModeButton, NotFound, OverlayImage, Title, ToggleSwitch, VideoWrapper, YouTubeContainer, YouTubeFrame } from "./styled";
 import { Maps } from "./enums";
 
 export const MapsPage = () => {
@@ -27,7 +27,19 @@ export const MapsPage = () => {
   
         <Content>
           <ImageContainer>
-            <MapImage src={isDay ? mapData.assets.image.day : mapData.assets.image.night} alt={mapData.name} />
+            <MapImage
+              isDay={isDay}
+              src={mapData.assets.image.day}
+              nightSrc={mapData.assets.image.night}
+              alt={mapData.name}
+            />
+
+            <OverlayImage
+              isDay={isDay}
+              src={mapData.assets.image.night}
+              alt={mapData.name}
+            />
+
             <ToggleSwitch onClick={() => setIsDay(!isDay)}>
               {isDay ? "🌞 Day" : "🌙 Night"}
             </ToggleSwitch>
@@ -49,14 +61,18 @@ export const MapsPage = () => {
         </ButtonContainer>
   
         <YouTubeContainer>
-          <iframe
-            width="100%"
-            height="400"
-            src={`https://www.youtube.com/embed/${(isDay ? mapData.assets.video.day : mapData.assets.video.night).split('/')[3]}?loop=1&showinfo=1&modestbranding=0&rel=0`}
-            title="Map Showcase"
-            frameBorder="0"
-            allowFullScreen
-          />
+          <VideoWrapper>
+            <YouTubeFrame
+              src={`https://www.youtube.com/embed/${mapData.assets.video.day.split('/')[3]}?loop=1&showinfo=1&modestbranding=0&rel=0`}
+              title="Daytime Map Showcase"
+              isDay={false} // Always visible
+            />
+            <YouTubeFrame
+              src={`https://www.youtube.com/embed/${mapData.assets.video.night.split('/')[3]}?loop=1&showinfo=1&modestbranding=0&rel=0`}
+              title="Nighttime Map Showcase"
+              isDay={isDay} // Toggles opacity
+            />
+          </VideoWrapper>
         </YouTubeContainer>
       </Container>
       </>
