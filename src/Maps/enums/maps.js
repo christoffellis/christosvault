@@ -10,8 +10,8 @@ export const Maps = [
                 night: "https://i.imgur.com/uNIXG6P.png",
             },
             video: {
-                day: "https://youtu.be/9XaY0noH_gk",
-                night: "https://youtu.be/NSpZYVuEpY8"
+                day: "https://youtu.be/BSbz2gCaUaA",
+                night: "https://youtu.be/j2Z3WvCj5-Q"
             }
         }
     },
@@ -26,8 +26,8 @@ export const Maps = [
                 night: "https://i.imgur.com/J62OFth.png",
             },
             video: {
-                day: "https://youtu.be/Pi7kdnEhHIs",
-                night: "https://youtu.be/fDe2F_4Z2Ig"
+                day: "https://youtu.be/0YNYFjhf5zM",
+                night: "https://youtu.be/a9DqcvJrNiQ"
             }
         }
     },
