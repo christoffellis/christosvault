@@ -31,4 +31,20 @@ export const Maps = [
             }
         }
     },
+    {
+        title: "Koboltonne",
+        path: "/maps/koboltonne",
+        background: "https://i.imgur.com/JemNNlR.jpeg",
+        longDescription: "Nestled in the sweet valleys on the edge of the Sarmin Plains, Koboltonne lies. The Kobolds here are known for their love of music, dance, and murder of innocent passer-bys.",
+        assets: {
+            image: {
+                day: "https://i.imgur.com/JemNNlR.jpeg",
+                night: "https://i.imgur.com/L8HZG4r.jpeg",
+            },
+            video: {
+                day: "https://youtu.be/Q1M0guCNm4k",
+                night: "https://youtu.be/TSAYG0WuXTo"
+            }
+        }
+    },
 ];

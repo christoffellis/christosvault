@@ -63,12 +63,12 @@ export const MapsPage = () => {
         <YouTubeContainer>
           <VideoWrapper>
             <YouTubeFrame
-              src={`https://www.youtube.com/embed/${mapData.assets.video.day.split('/')[3]}?loop=1&showinfo=1&modestbranding=0&rel=0`}
+              src={`https://www.youtube.com/embed/${mapData.assets.video.day.split('/')[3]}?loop=1&modestbranding=1&rel=0`}
               title="Daytime Map Showcase"
               isDay={false} // Always visible
             />
             <YouTubeFrame
-              src={`https://www.youtube.com/embed/${mapData.assets.video.night.split('/')[3]}?loop=1&showinfo=1&modestbranding=0&rel=0`}
+              src={`https://www.youtube.com/embed/${mapData.assets.video.night.split('/')[3]}?loop=1&modestbranding=1&rel=0`}
               title="Nighttime Map Showcase"
               isDay={isDay} // Toggles opacity
             />
