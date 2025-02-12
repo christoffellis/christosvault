@@ -37,6 +37,11 @@ export const CenteredDiv = styled.div`
   animation: ${fadeInUp} 0.5s ease-out;
 `;
 
+export const StyledH2 = styled.h2`
+
+  cursor: alias;
+`;
+
 // Styled button for choices
 export const StyledButton = styled.button`
   background-color: #f3a3;

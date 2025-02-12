@@ -3,6 +3,7 @@ import { StyledButton, PageContainer, CenteredDiv } from "./styled";
 import { Choice, startingChoice } from "./common";
 import { CharacterImageWrapper } from "./styled";
 import { CharacterImage } from "./styled";
+import { StyledH2 } from "./styled";
 
 export const BackgroundAssist = () => {
   const [currentChoice, setCurrentChoice] = useState(startingChoice);
@@ -38,7 +39,12 @@ export const BackgroundAssist = () => {
             <CharacterImageWrapper>
                 <CharacterImage src={currentChoice.url} alt="Character Portrait" />
             </CharacterImageWrapper>
-            <h2>{currentChoice.name}</h2>
+            <StyledH2
+                onClick={() => window.open(currentChoice.externalURL, "_blank")}
+            >
+                {currentChoice.name}
+            </StyledH2>
+
             <p>{currentChoice.description}</p>
             <StyledButton onClick={() => handleChoice(startingChoice)}>
                 Restart
