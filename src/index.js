@@ -9,6 +9,7 @@ import { MapGrid } from './MapGrid/MapGrid';
 import { CharacterGenerator } from './CharacterGenerator/CharacterGenerator';
 import { NPCQuickStats } from './npcQuickStat/npxQuickStats';
 import { MapsPage } from './Maps';
+import { BackgroundAssist } from './BackgroundAssist';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -24,6 +25,7 @@ root.render(
         <Route path="/character-generator" element={<CharacterGenerator />} />
         <Route path="/quick-stats" element={<NPCQuickStats />} />
         <Route path="/maps/:map-name" element={<MapsPage />} />
+        <Route path="/backgrounds" element={<BackgroundAssist />} />
       </Routes>
     </Router>
   </React.StrictMode>
