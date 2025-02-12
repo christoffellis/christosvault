@@ -11,7 +11,12 @@ export const BackgroundAssist = () => {
   const handleChoice = (option) => {
     setFadeOut(true);
     setTimeout(() => {
-      setCurrentChoice(currentChoice.options[option]);
+      if (option === startingChoice) {
+        setCurrentChoice(startingChoice);
+      }
+      else {
+        setCurrentChoice(currentChoice.options[option]);
+      }
       setFadeOut(false);
     }, 300); // 300ms matches CSS transition timing
   };
@@ -35,6 +40,9 @@ export const BackgroundAssist = () => {
             </CharacterImageWrapper>
             <h2>{currentChoice.name}</h2>
             <p>{currentChoice.description}</p>
+            <StyledButton onClick={() => handleChoice(startingChoice)}>
+                Restart
+              </StyledButton>
           </>
         )}
       </CenteredDiv>

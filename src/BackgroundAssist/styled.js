@@ -85,5 +85,5 @@ export const CharacterImage = styled.img`
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid #111;
+  // border: 5px solid #111;
 `;
