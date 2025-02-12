@@ -37,7 +37,7 @@ export const LandingPage = () => {
     {
       title: "Background Assist",
       path: "/backgrounds",
-      background: "assets/showcase-images/grids.png",
+      background: "assets/showcase-images/backgroundAssist.png",
       description: "An easy-to-use, click-and-load grid for maps",
     },
   ];

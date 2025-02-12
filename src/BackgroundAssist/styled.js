@@ -61,3 +61,29 @@ export const StyledButton = styled.button`
     transform: translateY(1px);
   }
 `;
+
+
+// Container for character image
+export const CharacterImageWrapper = styled.div`
+  position: absolute;
+  top: 0px; /* Moves image up */
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%); /* Center image */
+  width: 100px;
+  height: 100px;
+  background-color: #222; /* Matches pane background */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+`;
+
+// Character image with circular shape
+export const CharacterImage = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #111;
+`;

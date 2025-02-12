@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { StyledButton, PageContainer, CenteredDiv } from "./styled";
 import { Choice, startingChoice } from "./common";
+import { CharacterImageWrapper } from "./styled";
+import { CharacterImage } from "./styled";
 
 export const BackgroundAssist = () => {
   const [currentChoice, setCurrentChoice] = useState(startingChoice);
@@ -28,6 +30,9 @@ export const BackgroundAssist = () => {
           </>
         ) : (
           <>
+            <CharacterImageWrapper>
+                <CharacterImage src={currentChoice.url} alt="Character Portrait" />
+            </CharacterImageWrapper>
             <h2>{currentChoice.name}</h2>
             <p>{currentChoice.description}</p>
           </>
