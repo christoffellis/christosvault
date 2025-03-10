@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+  // position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 `;
 
 export const Background = styled.div`
@@ -41,6 +42,10 @@ export const AppContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: ${(props) => `url(${props.backgroundImage})`};
+  background-size: cover;
+  background-position: ${(props) => `top ${props.offsetX}px left ${props.offsetY}px`};
+  transform: ${(props) => `scale(${props.scale/100})`};
 `;
 
 export const VideoWrapper = styled.div`

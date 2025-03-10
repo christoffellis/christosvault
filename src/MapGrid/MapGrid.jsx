@@ -9,6 +9,8 @@ export const MapGrid = () => {
     cellSize: 50,
     offsetX: 0,
     offsetY: 0,
+    mapOffsetX: 0,
+    mapOffsetY: 0,
   });
   const [newImage, setNewImage] = useState("");
 
@@ -102,12 +104,17 @@ export const MapGrid = () => {
     ) : (
       <>
         <Background backgroundImage={backgroundImage.url} />
-        <AppContainer backgroundImage={backgroundImage.url} />
       </>
     )}
       <BackgroundCover />
 
-      <AppContainer backgroundImage={backgroundImage.url} rotate={backgroundImage.rotate} scale={scale}>
+      <AppContainer
+        backgroundImage={backgroundImage.url}
+        rotate={backgroundImage.rotate}
+        scale={gridSize.mapSize}
+        offsetX={gridSize.mapOffsetX}
+        offsetY={gridSize.mapOffsetY}
+      >
         <Grid
           rotated={backgroundImage.rotate}
           scale={scale}
@@ -139,49 +146,102 @@ export const MapGrid = () => {
             <input type="file" accept="image/*" onChange={handleFileUpload} />
           </label>
         </div>
-        <div>
-          <label>
-            Size (px):
-            <input
-              type="number"
-              value={gridSize.cellSize}
-              onChange={(e) => {
-                const newSize = Number(e.target.value);
-                setGridSize({ ...gridSize, cellSize: newSize });
-                localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, cellSize: newSize }));
-              }}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Offset X:
-            <input
-              type="number"
-              value={gridSize.offsetX}
-              onChange={(e) => {
-                const newOffsetX = Number(e.target.value);
-                setGridSize({ ...gridSize, offsetX: newOffsetX });
-                localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, offsetX: newOffsetX }));
-              }}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Offset Y:
-            <input
-              type="number"
-              value={gridSize.offsetY}
-              onChange={(e) => {
-                const newOffsetY = Number(e.target.value);
-                setGridSize({ ...gridSize, offsetY: newOffsetY });
-                localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, offsetY: newOffsetY }));
-              }}
-            />
-          </label>
-        </div>
-      </Panel>
+        
+  {/* Grid Settings Column */}
+  <div>
+    <h3>Grid</h3>
+    <div>
+      <label>
+        Size (px):
+        <input
+          type="number"
+          value={gridSize.cellSize}
+          onChange={(e) => {
+            const newSize = Number(e.target.value);
+            setGridSize({ ...gridSize, cellSize: newSize });
+            localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, cellSize: newSize }));
+          }}
+        />
+      </label>
+    </div>
+    <div>
+      <label>
+        Offset X:
+        <input
+          type="number"
+          value={gridSize.offsetX}
+          onChange={(e) => {
+            const newOffsetX = Number(e.target.value);
+            setGridSize({ ...gridSize, offsetX: newOffsetX });
+            localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, offsetX: newOffsetX }));
+          }}
+        />
+      </label>
+    </div>
+    <div>
+      <label>
+        Offset Y:
+        <input
+          type="number"
+          value={gridSize.offsetY}
+          onChange={(e) => {
+            const newOffsetY = Number(e.target.value);
+            setGridSize({ ...gridSize, offsetY: newOffsetY });
+            localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, offsetY: newOffsetY }));
+          }}
+        />
+      </label>
+    </div>
+  </div>
+
+  {/* Map Settings Column */}
+  <div>
+    <h3>Map</h3>
+    <div>
+      <label>
+        Map Size (%):
+        <input
+          type="number"
+          value={gridSize.mapSize || 100} // Default value
+          onChange={(e) => {
+            const newMapSize = Number(e.target.value);
+            setGridSize({ ...gridSize, mapSize: newMapSize });
+            localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, mapSize: newMapSize }));
+          }}
+        />
+      </label>
+    </div>
+    <div>
+      <label>
+        Map Offset X:
+        <input
+          type="number"
+          value={gridSize.mapOffsetX || 0}
+          onChange={(e) => {
+            const newMapOffsetX = Number(e.target.value);
+            setGridSize({ ...gridSize, mapOffsetX: newMapOffsetX });
+            localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, mapOffsetX: newMapOffsetX }));
+          }}
+        />
+      </label>
+    </div>
+    <div>
+      <label>
+        Map Offset Y:
+        <input
+          type="number"
+          value={gridSize.mapOffsetY || 0}
+          onChange={(e) => {
+            const newMapOffsetY = Number(e.target.value);
+            setGridSize({ ...gridSize, mapOffsetY: newMapOffsetY });
+            localStorage.setItem("gridSize", JSON.stringify({ ...gridSize, mapOffsetY: newMapOffsetY }));
+          }}
+        />
+      </label>
+    </div>
+  </div>
+</Panel>
+
     </Container>
   );
 };
