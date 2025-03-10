@@ -1,4 +1,4 @@
-'use strict';
+
 
 export const init = ({radius, color, speed}) => {
     const canvas = document.getElementsByTagName('canvas')[0];
@@ -105,7 +105,7 @@ export const init = ({radius, color, speed}) => {
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
 
         const status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
-        if (status != gl.FRAMEBUFFER_COMPLETE)
+        if (status !== gl.FRAMEBUFFER_COMPLETE)
             return false;
         return true;
     }
@@ -613,7 +613,7 @@ export const init = ({radius, color, speed}) => {
     }
 
     function resizeCanvas () {
-        if (canvas.width != canvas.clientWidth || canvas.height != canvas.clientHeight) {
+        if (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) {
             canvas.width = canvas.clientWidth;
             canvas.height = canvas.clientHeight;
             initFramebuffers();
@@ -742,9 +742,9 @@ export const init = ({radius, color, speed}) => {
         pointers[0].color = hexToRgbArray(color);
     }
 
-    function simulateMouseUp() {
-        pointers[0].down = false;
-    }
+    // function simulateMouseUp() {
+    //     pointers[0].down = false;
+    // }
 
     // Start simulation
     requestAnimationFrame(simulateMouse);

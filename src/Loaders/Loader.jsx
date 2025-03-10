@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // Import hooks for navigation
-import { Panel } from "./styled";
 import { init } from "./common/fluidLoader";
 
 export const Loader = () => {
