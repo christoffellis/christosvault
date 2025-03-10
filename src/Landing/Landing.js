@@ -64,10 +64,21 @@ export const LandingPage = () => {
     },
   ];
 
+  
+  const Loaders = [
+    {
+      title: "Fluid Loader",
+      path: "/loader/fluid",
+      background: "assets/showcase-images/loader_fluid.png",
+      description: "A mystical fluid animation to display while you're not using a screen",
+    },
+  ];
+
   const GridList = {
     "Tools": Tools,
     "Generators": Generators,
     "Puzzles": Puzzles,
+    "Loaders": Loaders
   }
 
   const SortedGridList = Object.fromEntries(

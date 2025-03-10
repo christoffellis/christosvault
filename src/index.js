@@ -10,6 +10,7 @@ import { CharacterGenerator } from './CharacterGenerator/CharacterGenerator';
 import { NPCQuickStats } from './npcQuickStat/npxQuickStats';
 import { MapsPage } from './Maps';
 import { BackgroundAssist } from './BackgroundAssist';
+import { Loader } from './Loaders/Loader';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,6 +27,7 @@ root.render(
         <Route path="/quick-stats" element={<NPCQuickStats />} />
         <Route path="/maps/:map-name" element={<MapsPage />} />
         <Route path="/backgrounds" element={<BackgroundAssist />} />
+        <Route path="/loader/:loader" element={<Loader />} />
       </Routes>
     </Router>
   </React.StrictMode>
