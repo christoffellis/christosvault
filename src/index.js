@@ -12,12 +12,14 @@ import { MapsPage } from './Maps';
 import { BackgroundAssist } from './BackgroundAssist';
 import { Loader } from './Loaders/Loader';
 import { LoaderController } from './LoaderController/LoaderController';
+import { AppBar } from './Landing/AppBar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
     <Router>
+      <AppBar /> {/* App Bar is now globally included */}
       <Routes>
         {/* Define routes here */}
         <Route exact path="/" element={<LandingPage />} />
