@@ -17,8 +17,13 @@ export const MapGrid = () => {
   const [panelOpacity, setPanelOpacity] = useState(1);
 
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("backgroundImage") ?? "");
-    const savedGridSize = JSON.parse(localStorage.getItem("gridSize") ?? "");
+    let savedData;
+    let savedGridSize;
+    try {
+      savedData = JSON.parse(localStorage.getItem("backgroundImage") ?? "");
+      savedGridSize = JSON.parse(localStorage.getItem("gridSize") ?? "");
+    }
+    catch {}
   
     if (savedData) setBackgroundImage(savedData);
     if (savedGridSize) setGridSize(savedGridSize);
