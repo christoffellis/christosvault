@@ -1,9 +1,6 @@
 
 
-let pointers = [];
-let splatStack = [];
-
-export const init = () => {
+export const init = ({radius, color, speed}) => {
     const canvas = document.getElementsByTagName('canvas')[0];
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
@@ -18,6 +15,8 @@ export const init = () => {
         SPLAT_RADIUS: 0.005
     }
 
+    let pointers = [];
+    let splatStack = [];
 
     const  { gl, ext } = getWebGLContext(canvas);
 
@@ -673,113 +672,16 @@ export const init = () => {
     //             if (touches[i].identifier == pointers[j].id)
     //                 pointers[j].down = false;
     // });
-}
 
-// export const start = ({radius, color, speed}) => {
 
-//     let angle = 0; // Tracks circular motion
-//     const centerX = window.innerWidth / 2; // Circle center X
-//     const centerY = window.innerHeight / 2; // Circle center Y
-
-//     function simulateMouse() {
-//         // Calculate new position
-//         const newX = centerX + Math.cos(angle) * radius;
-//         const newY = centerY + Math.sin(angle) * radius;
-
-//         // Simulate movement
-//         const event = {
-//             offsetX: newX,
-//             offsetY: newY
-//         };
-
-//         // Update pointer values
-//         pointers[0].moved = pointers[0].down;
-//         pointers[0].dx = (newX - pointers[0].x) * 10.0;
-//         pointers[0].dy = (newY - pointers[0].y) * 10.0;
-//         pointers[0].x = newX;
-//         pointers[0].y = newY;
-
-//         // Call the drawing function
-//         if (typeof onMouseMove === "function") {
-//                 pointers[0].moved = pointers[0].down;
-//                 pointers[0].dx = (event.offsetX - pointers[0].x) * 10.0;
-//                 pointers[0].dy = (event.offsetY - pointers[0].y) * 10.0;
-//                 pointers[0].x = event.offsetX;
-//                 pointers[0].y = event.offsetY;
-//             };
-
-//         // Simulate clicking at certain angles
-//         if (Math.sin(angle) > 0 && !pointers[0].down) {
-//             simulateMouseDown();
-//         }
-//             // } else if (Math.sin(angle) < 1 && pointers[0].down) {
-//         //     simulateMouseUp();
-//         // }
-
-//         // Update angle
-//         angle = Number(speed) + angle;
-//         if (angle > 2 * Math.PI) angle -= 2 * Math.PI;
-//         requestAnimationFrame(simulateMouse);
-//     }
-
-   
-    
-//     function simulateMouseDown() {
-//         pointers[0].down = true;
-//         pointers[0].color = hexToRgbArray(color);
-//     }
-
-//     // function simulateMouseUp() {
-//     //     pointers[0].down = false;
-//     // }
-
-//     // Start simulation
-//     requestAnimationFrame(simulateMouse);
-
-// }
-const hexToRgbArray = (color) => {
-    // Remove the '#' if it exists
-    let hex = color.replace(/^#/, "");
-
-    // Convert shorthand hex (e.g., #f00) to full form (#ff0000)
-    if (hex.length === 3) {
-        hex = hex.split("").map((char) => char + char).join("");
-    }
-
-    // Parse the hex values
-    const bigint = parseInt(hex, 16);
-    const r = ((bigint >> 16) & 255) / 255; // Normalize to 0-1 range
-    const g = ((bigint >> 8) & 255) / 255;
-    const b = (bigint & 255) / 255;
-
-    return [r, g, b]; // Return as an array
-};
-
-export const setColor =(color) => {
-    pointers[0].color = hexToRgbArray(color);
-};
-
-let moveSpeed = 0.01;
-
-export const setSpeed = (speed) => {
-    moveSpeed = speed;
-}
-
-let moveRadius = 10;
-
-export const setRadius = (radius) => {
-    moveRadius = radius;
-}
-
-export const start = () => {
     let angle = 0; // Tracks circular motion
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
+    const centerX = window.innerWidth / 2; // Circle center X
+    const centerY = window.innerHeight / 2; // Circle center Y
 
     function simulateMouse() {
         // Calculate new position
-        const newX = centerX + Math.cos(angle) * moveRadius;
-        const newY = centerY + Math.sin(angle) * moveRadius;
+        const newX = centerX + Math.cos(angle) * radius;
+        const newY = centerY + Math.sin(angle) * radius;
 
         // Simulate movement
         const event = {
@@ -812,18 +714,39 @@ export const start = () => {
         // }
 
         // Update angle
-
-        angle = Number(moveSpeed) + angle;
+        angle = Number(speed) + angle;
         if (angle > 2 * Math.PI) angle -= 2 * Math.PI;
         requestAnimationFrame(simulateMouse);
     }
 
-
-
+    const hexToRgbArray = (hex) => {
+        // Remove the '#' if it exists
+        hex = hex.replace(/^#/, "");
+    
+        // Convert shorthand hex (e.g., #f00) to full form (#ff0000)
+        if (hex.length === 3) {
+            hex = hex.split("").map((char) => char + char).join("");
+        }
+    
+        // Parse the hex values
+        const bigint = parseInt(hex, 16);
+        const r = ((bigint >> 16) & 255) / 255; // Normalize to 0-1 range
+        const g = ((bigint >> 8) & 255) / 255;
+        const b = (bigint & 255) / 255;
+    
+        return [r, g, b]; // Return as an array
+    };
+    
     function simulateMouseDown() {
         pointers[0].down = true;
-        pointers[0].color = hexToRgbArray("ffffff");
+        pointers[0].color = hexToRgbArray(color);
     }
 
+    // function simulateMouseUp() {
+    //     pointers[0].down = false;
+    // }
+
+    // Start simulation
     requestAnimationFrame(simulateMouse);
-};
+
+}

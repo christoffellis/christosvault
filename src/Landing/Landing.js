@@ -38,7 +38,7 @@ export const LandingPage = () => {
       title: "Background Assist",
       path: "/backgrounds",
       background: "assets/showcase-images/backgroundAssist.png",
-      description: "An easy-to-use, click-and-load grid for maps",
+      description: "Click and choose \"adventure\" for determining newer player's backgrounds",
     },
   ];
 
@@ -54,23 +54,29 @@ export const LandingPage = () => {
       title: "Character Generator",
       path: "/character-generator",
       background: "assets/showcase-images/character-generator.png",
-      description: "A simple character generator for practicing DMs",
+      description: "A simple character personality generator for practicing DMs",
     },
     {
       title: "NPC Quick Stats",
       path: "/quick-stats",
       background: "assets/showcase-images/stats-generator.png",
-      description: "A simple character generator for practicing DMs",
+      description: "A simple character stats generator for practicing DMs",
     },
   ];
 
   
   const Loaders = [
     {
+      title: "Controller",
+      path: "/loader/controller",
+      background: "assets/showcase-images/loader_controller.png",
+      description: "Used to control the fluid loader",
+    },
+    {
       title: "Fluid Loader",
       path: "/loader/fluid",
       background: "assets/showcase-images/loader_fluid.png",
-      description: "A mystical fluid animation to display while you're not using a screen",
+      description: "A mystical fluid animation to display while you're not using a screen - supports images as well",
     },
   ];
 

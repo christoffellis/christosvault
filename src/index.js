@@ -11,6 +11,7 @@ import { NPCQuickStats } from './npcQuickStat/npxQuickStats';
 import { MapsPage } from './Maps';
 import { BackgroundAssist } from './BackgroundAssist';
 import { Loader } from './Loaders/Loader';
+import { LoaderController } from './LoaderController/LoaderController';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -28,6 +29,7 @@ root.render(
         <Route path="/maps/:map-name" element={<MapsPage />} />
         <Route path="/backgrounds" element={<BackgroundAssist />} />
         <Route path="/loader/:loader" element={<Loader />} />
+        <Route path="/loader/controller" element={<LoaderController />} />
       </Routes>
     </Router>
   </React.StrictMode>

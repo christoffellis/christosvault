@@ -1,48 +1,61 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // Import hooks for navigation
-import { init } from "./common/fluidLoader";
+import React, { useEffect, useState } from "react";
+import { init, start, setColor, setSpeed, setRadius } from "./common/fluidLoader";
 
 export const Loader = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  // States for radius, color, speed, and imageradius
+  const [image, setImage] = useState(
+    "https://images.immediate.co.uk/production/volatile/sites/10/2023/06/2048x1365-Oak-trees-SEO-GettyImages-90590330-b6bfe8b.jpg"
+  ); // Default image
 
-  // Get search params from the URL
-  const searchParams = new URLSearchParams(location.search);
-  const radius = searchParams.get("radius");
-  const color = searchParams.get("color");
-  const speed = searchParams.get("speed");
-
-  useEffect(() => {
-    // If radius or color are missing, update the URL
-    if (!radius || !color || !speed) {
-      const newParams = new URLSearchParams(location.search);
-
-      if (!radius) newParams.set("radius", window.screen.width * 0.025); // Default radius
-      if (!color) newParams.set("color", "408810"); // Default color (red)
-
-      if (!speed) newParams.set("speed", "0.01");
-
-      navigate(`?${newParams.toString()}`, { replace: true });
-    }
-    else
-    {
-      init(
-        {radius, color, speed}
-      );
-    }
-  }, [radius, color, location.search, navigate, speed]);
+  // Reference for values to be passed to fluidLoader
+  const valuesRef = React.useRef({color: "ffffff", image });
 
   useEffect(() => {
-
+    init(); // Initialize the fluid loader
   }, []);
+
+  useEffect(() => {
+    // Update the fluid loader whenever any state changes
+    setColor("ffffff"); // Update the color in the fluid loader
+    start(valuesRef); // Start or restart the loader with updated values
+  }, [image]);
+
+  useEffect(() => {
+    const channel = new BroadcastChannel("loader_channel");
+
+    channel.onmessage = (event) => {
+      const { radius, color, speed, image } = event.data;
+
+      // Update the state values
+      setRadius(radius);
+      setColor(color);
+      setImage(image);
+      setSpeed(speed);
+    };
+
+    return () => {
+      channel.close();
+    };
+  }, []); // We only need to set up the listener once
 
   return (
     <>
-      <canvas
+      <div
         style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundImage: `url(${image})`, // Use selected image
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <canvas
+        id="mask-canvas"
+        style={{
+          mixBlendMode: "darken",
+          position: "absolute",
           width: "100%",
           height: "100%",
-          aspectRatio: window.screen.width / window.screen.height,
         }}
       ></canvas>
     </>
