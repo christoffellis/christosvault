@@ -6,7 +6,6 @@ import {
   Slider,
   Label,
   ColorInput,
-  ImageInput,
   PreviewImage,
   SizePanel,
   TextInput,
@@ -30,6 +29,7 @@ export const LoaderController = () => {
   // Whenever any state changes, send the updated value automatically
   useEffect(() => {
     sendMessage({ radius, color, speed, image });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radius, color, speed, image]);
 
   // Handle Image Upload (Local File)
