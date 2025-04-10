@@ -60,11 +60,21 @@ const Puzzles = [
     },
   ];
 
+  const Games = [
+    {
+      title: 'The Witch is Dead',
+      path: "/games/the-witch-is-dead",
+      background: "assets/showcase-images/loader_fluid.png",
+      description: "A mystical fluid animation to display while you're not using a screen - supports images as well",
+    }
+  ]
+
   const GridList = {
     "Tools": Tools,
     "Generators": Generators,
     "Puzzles": Puzzles,
-    "Loaders": Loaders
+    "Loaders": Loaders,
+    "Games": Games
   }
 
   export const SortedGridList = Object.fromEntries(

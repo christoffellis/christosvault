@@ -13,6 +13,7 @@ import { BackgroundAssist } from './BackgroundAssist';
 import { Loader } from './Loaders/Loader';
 import { LoaderController } from './LoaderController/LoaderController';
 import { AppBar } from './Landing/AppBar';
+import { WitchIsDead } from './Games/witchIsDead';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -32,6 +33,7 @@ root.render(
         <Route path="/backgrounds" element={<BackgroundAssist />} />
         <Route path="/loader/:loader" element={<Loader />} />
         <Route path="/loader/controller" element={<LoaderController />} />
+        <Route path="/games/the-witch-is-dead" element={<WitchIsDead />} />
       </Routes>
     </Router>
   </React.StrictMode>
