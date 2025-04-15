@@ -14,6 +14,7 @@ import { Loader } from './Loaders/Loader';
 import { LoaderController } from './LoaderController/LoaderController';
 import { AppBar } from './Landing/AppBar';
 import { WitchIsDead } from './Games/witchIsDead';
+import Quotes from './quotes/quotes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -29,6 +30,7 @@ root.render(
         <Route path="/map-grids" element={<MapGrid />} />
         <Route path="/character-generator" element={<CharacterGenerator />} />
         <Route path="/quick-stats" element={<NPCQuickStats />} />
+        <Route path="/quotes" element={<Quotes />} />
         <Route path="/maps/:map-name" element={<MapsPage />} />
         <Route path="/backgrounds" element={<BackgroundAssist />} />
         <Route path="/loader/:loader" element={<Loader />} />

@@ -20,6 +20,13 @@ const Puzzles = [
       background: "assets/showcase-images/backgroundAssist.png",
       description: "Click and choose \"adventure\" for determining newer player's backgrounds",
     },
+
+    {
+      title: "Quotes",
+      path: "/quotes",
+      background: "assets/showcase-images/backgroundAssist.png",
+      description: "Click and choose \"adventure\" for determining newer player's backgrounds",
+    },
   ];
 
   const Generators = [
