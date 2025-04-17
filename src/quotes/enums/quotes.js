@@ -6,54 +6,57 @@ export const Perspective = {
 
 export const Categories = {
     Tone: {
-        Vengeance: 'Vengeance',
-        Grief: 'Grief',
-        Regret: 'Regret',
-        Pride: 'Pride',
-        Love: 'Love',
-        Sadness: 'Sadness',
-        Mystery: 'Mystery',
-        Resolve: 'Resolve',
-        Justice: 'Justice',
-        Humourous: 'Humourous'
+      Vengeance: { name: 'Vengeance', color: '#ff4d4f' },
+      Grief: { name: 'Grief', color: '#6a0572' },
+      Regret: { name: 'Regret', color: '#9e4770' },
+      Pride: { name: 'Pride', color: '#d4af37' },
+      Love: { name: 'Love', color: '#ff6b81' },
+      Sadness: { name: 'Sadness', color: '#3a6ea5' },
+      Mystery: { name: 'Mystery', color: '#5c5470' },
+      Resolve: { name: 'Resolve', color: '#2d6a4f' },
+      Justice: { name: 'Justice', color: '#3d405b' },
+      Humorous: { name: 'Humorous', color: '#f4a261' },
+      Ominous: { name: 'Ominous', color: '#1e1e2f' }
     },
+  
     Archetype: {
-        AntiHero: 'AntiHero',
-        Villain: 'Villain',
-        TragicHero: 'TragicHero',
-        Redeemer: 'Redeemer',
-        Warrior: 'Warrior',
-        AncientBeing: 'AncientBeing',
-        Betrayed: 'Betrayed',
-        Avenger: 'Avenger',
-        Prophet: 'Prophet',
-        BrokenMentor: 'BrokenMentor',
+      AntiHero: { name: 'Anti Hero', color: '#7f5af0' },
+      Villain: { name: 'Villain', color: '#d00000' },
+      TragicHero: { name: 'Tragic Hero', color: '#ffb703' },
+      Redeemer: { name: 'Redeemer', color: '#2ec4b6' },
+      Warrior: { name: 'Warrior', color: '#264653' },
+      AncientBeing: { name: 'Ancient Being', color: '#8338ec' },
+      Betrayed: { name: 'Betrayed', color: '#9e2a2b' },
+      Avenger: { name: 'Avenger', color: '#ef233c' },
+      Prophet: { name: 'Prophet', color: '#5f0f40' },
+      BrokenMentor: { name: 'Broken Mentor', color: '#8d99ae' }
     },
+  
     DialogueFunction: {
-        Monologue: 'Monologue',
-        Confrontation: 'Confrontation',
-        Confession: 'Confession',
-        Taunt: 'Taunt',
-        Revelation: 'Revelation',
-        Plea: 'Plea',
-        Goodbye: 'Goodbye',
-        InternalThought: 'InternalThought',
+      Monologue: { name: 'Monologue', color: '#118ab2' },
+      Confrontation: { name: 'Confrontation', color: '#ef476f' },
+      Confession: { name: 'Confession', color: '#06d6a0' },
+      Taunt: { name: 'Taunt', color: '#ffd166' },
+      Revelation: { name: 'Revelation', color: '#073b4c' },
+      Plea: { name: 'Plea', color: '#ff9f1c' },
+      Goodbye: { name: 'Goodbye', color: '#8e9aaf' },
+      InternalThought: { name: 'Internal Thought', color: '#adb5bd' }
     },
+  
     Theme: {
-        Identity: 'Identity',
-        Power: 'Power',
-        Redemption: 'Redemption',
-        Time: 'Time',
-        Destiny: 'Destiny',
-        Sacrifice: 'Sacrifice',
-        Betrayal: 'Betrayal',
-        Memory: 'Memory',
-        Legacy: 'Legacy',
-        Myth: 'Myth',
-        Humour: 'Humour'
+      Identity: { name: 'Identity', color: '#6a4c93' },
+      Power: { name: 'Power', color: '#c1121f' },
+      Redemption: { name: 'Redemption', color: '#2b9348' },
+      Time: { name: 'Time', color: '#577590' },
+      Destiny: { name: 'Destiny', color: '#6c757d' },
+      Sacrifice: { name: 'Sacrifice', color: '#780000' },
+      Betrayal: { name: 'Betrayal', color: '#9d0208' },
+      Memory: { name: 'Memory', color: '#3f88c5' },
+      Legacy: { name: 'Legacy', color: '#ff6d00' },
+      Myth: { name: 'Myth', color: '#b08968' },
+      Humour: { name: 'Humour', color: '#fcbf49' }
     }
-};
-
+  };
 
 export const lines = [
     {
