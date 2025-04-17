@@ -7,8 +7,14 @@ export const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle at center, #120326 5%, #0a0214 80%);
+  background: radial-gradient(circle at center, #111111 0%, #0a0214 80%);
   z-index: -1;
+  animation: pulseBG 20s ease-in-out infinite;
+
+  @keyframes pulseBG {
+    0%, 100% { background-position: center; }
+    50% { background-position: top center; }
+  }
 `;
 
 // Main Container
@@ -28,40 +34,35 @@ export const Header = styled.div`
   color: white;
   font-size: 32px;
   font-weight: bold;
-  padding: 20px;
-  border-radius: 10px;
-  backdrop-filter: blur(8px);
-  background: linear-gradient(to right, rgba(95, 127, 255, 0.4), rgba(167, 184, 255, 0.4));
-  box-shadow: 0px 0px 15px rgba(150, 90, 255, 0.4);
+  padding: 24px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(120, 90, 255, 0.3), rgba(167, 130, 255, 0.2));
+  box-shadow: 0 0 30px rgba(180, 120, 255, 0.3);
   margin-bottom: 40px;
+
   @media (max-width: 768px) {
-    font-size: 28px;
-    padding: 15px;
+    font-size: 26px;
+    padding: 16px;
   }
 `;
 
+// Grid Label
 export const GridLabel = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.6rem;
+  font-weight: 600;
   text-align: center;
-  margin: 16px;
-  padding: 10px;
-  background: linear-gradient(to right, rgba(95, 127, 255, 0.4), rgba(167, 184, 255, 0.4));
-  color: white;
-  border-radius: 8px;
-  box-shadow: 0px 2px 8px rgba(150, 90, 255, 0.3);
-  backdrop-filter: blur(6px);
-
-  @media (max-width: 768px) {
-    font-size: 1.3rem;
-    padding: 8px;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 1.2rem;
-  }
+  margin: 24px 0 12px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #5f7fff88, #a7b8ff66);
+  color: #f5f0ff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(150, 90, 255, 0.3);
+  text-shadow: 0 0 6px rgba(180, 120, 255, 0.3);
+  backdrop-filter: blur(8px);
 `;
 
+// Grid
 export const Grid = styled.div`
   background-color: #0006;
   border-radius: 24px;
@@ -74,6 +75,7 @@ export const Grid = styled.div`
   padding: 16px;
 `;
 
+// Link Card
 export const LinkItem = styled.div`
   position: relative;
   display: flex;
@@ -88,11 +90,11 @@ export const LinkItem = styled.div`
   color: white;
   padding: 15px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.5s ease-in-out;
-  box-shadow: 0 5px 12px rgba(100, 50, 150, 0.3);
+  box-shadow: 0 0px 10px rgba(120, 90, 255, 0.25);
+  background-color: rgba(30, 0, 50, 0.3);
   cursor: pointer;
-  overflow: hidden; /* Ensure the background doesn't overflow */
+  overflow: hidden;
 
-  /* Before element for the background */
   &::before {
     content: "";
     position: absolute;
@@ -101,21 +103,20 @@ export const LinkItem = styled.div`
     right: 0;
     bottom: 0;
     background: ${({ background }) => `url(${background}) center/cover`};
-    filter: blur(4px); /* Apply initial blur effect */
-    z-index: -1; /* Put the background behind the content */
-    transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out, background-size 0.8s ease-in-out; /* Longer transition */
-    opacity: 1; /* Initially visible */
+    filter: blur(5px) brightness(0.8);
+    z-index: -1;
+    transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out, background-size 0.8s ease-in-out;
+    opacity: 1;
     background-size: 100%;
   }
 
   &:hover {
-    box-shadow: 0px 0px 18px rgb(150, 90, 255);
-    background-color: #965aff10;
-
+    box-shadow: 0 0 20px rgba(150, 90, 255, 0.6);
+    background-color: rgba(100, 60, 200, 0.2);
 
     &::before {
-      filter: blur(2px); /* Apply less blur on hover */
-      opacity: 0.85; /* Slightly reduce opacity to give a fading effect */
+      filter: blur(2px) brightness(1);
+      opacity: 0.85;
       background-size: 110%;
     }
   }
@@ -125,26 +126,27 @@ export const LinkItem = styled.div`
   }
 `;
 
-
 // Link Title
 export const LinkTitle = styled.span`
   font-size: 1.2rem;
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
   padding: 8px 12px;
   border-radius: 8px;
-  margin-bottom: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 `;
 
-// Description Text
+// Link Description
 export const LinkDescription = styled.span`
   font-size: 0.9rem;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #ddd;
 `;
 
-// Floating "Buy Me a Coffee" Button
+// Coffee Button Wrapper
 export const CoffeeWrapper = styled.div`
   position: fixed;
   bottom: 20px;
@@ -157,7 +159,7 @@ export const CoffeeWrapper = styled.div`
 
   &:hover {
     transform: scale(1.1);
-    filter: drop-shadow(0px 0px 10px rgba(255, 200, 255, 0.6));
+    filter: drop-shadow(0 0 12px rgba(255, 180, 255, 0.6));
   }
 
   @media (max-width: 768px) {
@@ -166,7 +168,7 @@ export const CoffeeWrapper = styled.div`
   }
 `;
 
-// Title Styling
+// Title Fonts
 export const ChristosText = styled.span`
   font-family: 'Cinzel', serif;
   font-size: 48px;
@@ -188,5 +190,60 @@ export const VaultText = styled.span`
 
   @media (max-width: 600px) {
     font-size: 48px;
+  }
+`;
+
+// Section Title
+export const SectionTitle = styled.h3`
+  color: #d9c1ff;
+  font-size: 1.3rem;
+  margin: 32px 0 12px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  text-shadow: 0 0 4px rgba(200, 150, 255, 0.3);
+`;
+
+// Pip Tags
+export const PipContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+`;
+
+export const Pip = styled.div`
+  background-color: ${({ color, selected }) => (color ? `${color}${selected ? '88' : '33'}` : '#333333')};
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.5em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: ${({ color, selected }) => (color ? `${color}${selected ? 'dd' : '44'}` : '#666666')};
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover {
+    background-color: ${({ color }) => color ? `${color}55` : '#666'};
+    border-color: ${({ color }) => color || '#666'};
+
+    &::before {
+      background-color: ${({ color }) => color ? `${color}cc` : '#888888'};
+    }
   }
 `;

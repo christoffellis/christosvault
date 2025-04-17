@@ -12,10 +12,10 @@ import {
   CoffeeWrapper,
   LinkDescription,
   GridLabel,
+  SectionTitle
 } from "./styled";
 import { Maps } from "../Maps/enums";
 import { SortedGridList } from "./enums";
-
 
 export const LandingPage = () => {
   const navigate = useNavigate();
@@ -23,13 +23,15 @@ export const LandingPage = () => {
   return (
     <Wrapper>
       <Background />
+      
+      {/* Header */}
       <Header>
         <ChristosText>Christo's</ChristosText>
         <br />
         <VaultText>Vault</VaultText>
       </Header>
-
-      {/* Buy Me a Coffee */}
+      
+      {/* Coffee Wrapper */}
       <CoffeeWrapper>
         <a href="https://www.buymeacoffee.com/christoffellis">
           <img
@@ -38,30 +40,32 @@ export const LandingPage = () => {
           />
         </a>
       </CoffeeWrapper>
+
+      {/* Links List with Updated Styles */}
       {Object.entries(SortedGridList).map(([key, value], index) => (
         <>
-        <GridLabel>{key}</GridLabel>
-        <Grid>
-          {value.map((link, index) => (
-            <LinkItem key={index} onClick={() => navigate(link.path)} background={link.background}>
-              <LinkTitle>{link.title}</LinkTitle>
-              {link.description && (<LinkDescription>{link.description}</LinkDescription>)}
-            </LinkItem>
-          ))}
-        </Grid>
+          <SectionTitle>{key}</SectionTitle>
+          <Grid>
+            {value.map((link, index) => (
+              <LinkItem key={index} onClick={() => navigate(link.path)} background={link.background}>
+                <LinkTitle>{link.title}</LinkTitle>
+                {link.description && <LinkDescription>{link.description}</LinkDescription>}
+              </LinkItem>
+            ))}
+          </Grid>
         </>
       ))}
 
+      {/* Maps Section */}
       <GridLabel>Maps</GridLabel>
-        <Grid>
-          {Maps.map((link, index) => (
-            <LinkItem key={index} onClick={() => navigate(link.path)} background={link.background}>
-              <LinkTitle>{link.title}</LinkTitle>
-              {link.description && (<LinkDescription>{link.description}</LinkDescription>)}
-            </LinkItem>
-          ))}
-        </Grid>
-      
+      <Grid>
+        {Maps.map((link, index) => (
+          <LinkItem key={index} onClick={() => navigate(link.path)} background={link.background}>
+            <LinkTitle>{link.title}</LinkTitle>
+            {link.description && <LinkDescription>{link.description}</LinkDescription>}
+          </LinkItem>
+        ))}
+      </Grid>
     </Wrapper>
   );
 };
